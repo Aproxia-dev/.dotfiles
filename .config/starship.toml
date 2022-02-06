@@ -1,0 +1,13 @@
+add_newline = false
+
+[line_break]
+disabled = true
+
+[cmd_duration]
+min_time = 400
+show_milliseconds = false
+style = "bold blue"
+
+[directory]
+style = "bold purple"
+truncation_symbol = "…/"
