@@ -26,7 +26,7 @@ fi
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export EDITOR=vim
+export EDITOR=nvim
 export BROWSER=firefox
 export BAT_THEME="Monokai Extended"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -58,17 +58,21 @@ alias sudo="doas"
 alias please="doas"
 alias pls="doas"
 
-alias shutdown="doas shutdown -h now"
-alias reboot="doas shutdown -r now"
-alias zzz="doas hibernate"
+alias shutdown="shutdown -h now"
+alias reboot="shutdown -r now"
+alias sleep="systemctl suspend"
 
-alias edit="vim"
-alias sedit="doas vim"
+alias bai="shutdown -h now"
+alias brb="shutdown -r now"
+alias cya="systemctl suspend"
+alias zzz="systemctl suspend"
 
-alias emerge="doas emerge -av"
+alias vim="nvim"
+alias edit="nvim"
+alias sedit="doas nvim"
 
 alias :q="exit"
 alias :wq="exit"
 
-source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

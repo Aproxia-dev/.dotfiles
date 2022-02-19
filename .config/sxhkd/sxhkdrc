@@ -16,7 +16,7 @@ super + {_,shift + }r
 
 # take screenshot of selected area
 ctrl + Insert
-	scrot -s -e 'xclip -selection clipboard -t image/png < $f && mv $f ~/.screenshots/' --line style=solid,mode=edge '%m_%d_%Y-%H.%M.%S-$wx$h.png'
+	scrot -s -e 'xclip -selection clipboard -t image/png < $f && mv $f ~/.screenshots/' --line style=solid,mode=edge '%Y-%m-%d-%H.%M.%S_$wx$h.png'
 
 # take screenshot of focused monitor
 Insert

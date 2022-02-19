@@ -20,8 +20,8 @@
 background = #2c2e34
 foreground = #e2e2e3
 background-alt = #414550
-primary = #b39df3
-secondary = #76cce0
+primary = #76cce0
+secondary = #b39df3
 alert = #fc5d7c
 
 [bar/primary]
@@ -201,7 +201,7 @@ label = %date%%time%
 
 [module/gentoo]
 type = custom/text
-content = "  %{T2} %{T-}"
+content = "  %{T2} %{T-}"
 
 content-background = ${colors.background-alt}
 content-foreground = ${colors.foreground}
