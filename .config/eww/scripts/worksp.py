@@ -1,6 +1,6 @@
 #!/usr/bin/python
 from subprocess import run
-
+from sys import argv as args
 
 def workspaces():
     global wsboxes
@@ -9,8 +9,7 @@ def workspaces():
 
     wsboxes = ""
 
-    #for monitor in monitors:
-    monitor="HDMI-A-0"
+    monitor = args[1]
     for workspace in workspaces:
         _class = checkws(monitor, workspace)
         wsboxes += "(button :class '"+_class+"' :onclick 'bspc desktop -f "+workspace+".local' '"+workspace+"')"

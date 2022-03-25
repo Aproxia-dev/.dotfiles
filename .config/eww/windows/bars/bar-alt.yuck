@@ -1,0 +1,36 @@
+(defwidget start-alt []
+    (box  :orientation "v"
+          :space-evenly "false"
+          :valign "start"
+          (launcher)
+          (workspaces-alt)
+    )
+)
+
+(defwidget bar-alt []
+    (box  :orientation "v"
+          :space-evenly "false"
+          ;:valign "center"
+          :vexpand "false"
+          :hexpand "false"
+          (start-alt)
+          (box  :valign "fill"
+                :vexpand "true")
+          (end)
+    )
+)
+
+(defwindow bar-alt
+           :monitor 1
+           :geometry (geometry :x "0px"
+                               :y "0px"
+                               :width "30px"
+                               :height "100%"
+                               :anchor "top left")
+           :reserve (struts :distance "38px" 
+                            :side "left")
+           :wm-ignore "false"
+           :vexpand "false"
+           :hexpand "false"
+(bar-alt)
+)

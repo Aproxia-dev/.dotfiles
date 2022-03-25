@@ -1,0 +1,15 @@
+(include "windows/bars/bar-main.yuck")
+(include "windows/bars/bar-alt.yuck")
+
+(include "widgets/bars.yuck")
+
+(defwidget end []
+    (box  :orientation "v"
+          :space-evenly "false"
+          :valign "end"
+          (volume)
+          (clock)
+          (power)
+    )
+)
+

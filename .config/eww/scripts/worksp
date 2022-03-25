@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./scripts/worksp.py
+./scripts/worksp.py $1
 bspc subscribe desktop node_transfer | while read -r _ ; do
-./scripts/worksp.py
+./scripts/worksp.py $1
 done
