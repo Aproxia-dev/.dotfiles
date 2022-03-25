@@ -1,0 +1,20 @@
+(defwidget clock []
+    (box :class "block clock"
+         :orientation "v"
+         :valign "end"
+         {hour}
+         {minute}
+         (box :class "ampm"
+              {ampm})
+    )
+)
+
+
+(defpoll hour :interval "1s"
+              `date "+%I"`)
+
+(defpoll minute :interval "1s"
+                `date "+%M"`)
+
+(defpoll ampm :interval "1s"
+              `date "+%p"`)

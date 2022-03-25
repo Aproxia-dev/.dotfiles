@@ -1,0 +1,121 @@
+configuration{
+    modi: 			"drun";
+    lines: 			5;
+    font: 			"Iosevka Nerd Font 10";
+    show-icons: 		true;
+    drun-display-format: 	"{name}";
+    location: 			0;
+    disable-history: 		false;
+    hide-scrollbar: 		true;
+    display-drun: 		"   Apps ";
+    display-window: 		" 﩯 Window ";
+    sidebar-mode: 		false;
+}
+
+@theme "catppuccin"
+
+element-text, element-icon, {
+    background-color: 		inherit;
+    text-color:       		inherit;
+}
+
+window {
+    transparency: 		"real";
+    height: 			65%;
+    width: 			70%;
+    border: 			3px;
+    border-color: 		@border-col;
+    border-radius: 		15px 15px 15px 15px;
+    background-color: 		@bg-col;
+}
+
+mainbox {
+    background-color: 		@bg-col;
+}
+
+inputbar {
+    children: 			[prompt,entry];
+    background-color: 		@bg-col;
+    border-radius: 		5px;
+    padding: 			2px;
+}
+
+prompt {
+    background-color: 		@pink;
+    padding: 			6px;
+    text-color: 		@bg-col;
+    border-radius: 		3px;
+    margin: 			20px 0px 0px 20px;
+}
+
+textbox-prompt-colon {
+    expand: 			false;
+    str: 			":";
+}
+
+entry {
+    padding: 			6px;
+    margin: 			20px 0px 0px 10px;
+    text-color: 		@fg-col;
+    background-color: 		@bg-col;
+    blink: 			true;
+}
+
+listview {
+    border: 			0px 0px 0px;
+    padding: 			6px;
+    margin: 			20px 0px 0px 10px;
+    columns: 			8;
+    background-color: 		@bg-col;
+    spacing: 			1%;
+    dynamic: 			true;
+    layout: 			vertical;
+}
+
+element {
+    background-color: 		@bg-col;
+    text-color: 		@fg-col;
+    orientation:                vertical;
+    border-radius:              0%;
+    padding:                    1% 0% 1% 0%;
+}
+
+element-icon {
+    background-color: 		inherit;
+    text-color:       		inherit;
+    horizontal-align:           0.5;
+    vertical-align:             0.5;
+    size:                       64px;
+    border:                     0px;
+}
+
+element-text {
+    background-color: 		inherit;
+    text-color:       		inherit;
+    expand:                     true;
+    horizontal-align:           0.5;
+    vertical-align:             0.5;
+    margin:                     0.5% 1% 0% 1%;
+}
+
+element selected {
+    background-color:  		@selected-col ;
+    text-color: 		@fg-col2;
+    border-radius: 		8px 8px 8px 8px;
+}
+
+
+button {
+    padding: 			10px;
+    background-color: 		@bg-col-light;
+    text-color: 		@grey;
+    vertical-align: 		0.5; 
+    horizontal-align: 		0.5;
+    border-radius: 		8px 8px 8px 8px;
+}
+
+button selected {
+  background-color: 		@bg-col;
+  text-color: 			@pink;
+}
+

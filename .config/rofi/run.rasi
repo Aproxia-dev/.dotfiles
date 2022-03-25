@@ -1,0 +1,111 @@
+configuration {
+    modi:			"run";
+    font: 			"Iosevka Nerd Font 10";
+    location: 			8;
+    fixed-num-lines: 		true;
+    show-icons: 		false;
+    sidebar-mode: 		true;
+    scroll-method: 		0;
+    window-format: 		"[{w}] ··· {c} ···   {t}";
+    click-to-exit: 		true;
+    combi-hide-mode-prefix: 	false;
+    display-run: 		">_ ";
+}
+
+@theme "catppuccin"
+
+window {
+    transparency: 		"real";
+    border: 			3px;
+    padding: 			12px 0px 0px 12px;
+    width: 			20%;
+    height: 			96%;
+    y-offset:			1%;
+    x-offset:			1%;
+    border-color: 		@border-col;
+    background-color: 		@bg-col;
+    border-radius:		15px;
+}
+
+mainbox {
+    background-color: 		@bg-col;
+    border:			0px;
+    padding:			0;
+}
+
+inputbar {
+    children: 			[prompt,entry];
+    background-color: 		@bg-col;
+    border-radius: 		5px;
+    padding: 			2px;
+    spacing:			6px;
+}
+
+prompt {
+    background-color: 		@pink;
+    padding: 			6px;
+    text-color: 		@bg-col;
+    border-radius: 		3px;
+    margin: 			4px 0px 0px 4px;
+}
+
+entry {
+    spacing:			0;
+    background-color: 		@bg-col;
+    text-color: 		@fg-col;
+    blink: 			true;
+    margin:	 		6px 0px 0px 0px;
+    vertical-align:		0.5;
+}
+
+listview {
+    lines:			15;
+    columns:			1;
+    fixed-height: 		0;
+    background-color:		@bg-col;
+    border: 			0px;
+    border-color: 		@bg-col-light;
+    spacing: 			4px;
+    scrollbar: 			false;
+    padding: 			15px 5px 0px 5px;
+}
+
+
+element-text, element-icon {
+    background-color:		#00000000;
+    text-color:			inherit;
+}
+
+element {
+    border: 			0px;
+    border-radius: 		4px;
+    padding: 			5px;
+}
+
+element normal {
+    background-color: 		@bg-col;
+    text-color:       		@fg-col;
+}
+
+element selected {
+    background-color:		@bg-col-light;
+    text-color:			@pink;
+}
+
+sidebar {
+    border:       					0px;
+    border-color: 					@bg-col-light;
+    border-radius: 					0px;
+}
+
+scrollbar {
+    width:			4px;
+    border:			0px;
+    handle-color:		@pink;
+    handle-width:		8px;
+    padding:			0;
+}
+
+button { 
+    enabled:			false;
+}

@@ -1,0 +1,140 @@
+$dbg:		#161320;
+$bg: 		#1E1E2E;
+$lbg:		#302D41;
+$sel:		#3d3c4d;
+$hl:		#575268;
+$fg: 		#D9E0EE;
+
+
+$red: 		#F28FAD;
+$green: 	#ABE9B3;
+$yellow: 	#FAE3B0;
+$blue: 		#89DCEB;
+$magenta: 	#DDB6F2;
+$teal: 		#B5E8E0;
+$orange:	#F8BD96;
+$pink:		#F5C2E7;
+$mauve: 	#DDB6F2;
+$maroon:	#E8A2AF;
+
+$pinksel:	#e8a9d7;
+
+$lavender:	#C9CBFF;
+$rosewater:	#F5E0DC;
+
+//   Bar
+
+window {
+	//font-family: "FiraCode Nerd Font Mono";
+	font-family: "Iosevka Nerd Font Mono";
+	font-size: 12px;
+}
+
+// Launcher
+
+button.launcher {
+	all: unset;
+	background-color: $bg;
+	color: $pink;
+	font-size: 24px;
+	margin: 4px; 
+	border-radius: 6px;
+}
+
+button.launcher:hover {
+	background-color: $lbg;
+}
+
+// Workspaces
+
+.workspaces {
+	background-color: $lbg;
+	min-width: 26px;
+	margin: 4px;
+	border-radius: 10px;
+}
+
+.workspaces button {
+	background-color: $lbg;
+	color: $hl;
+	padding: unset;
+	margin: unset;
+	margin: 6px 2px 6px 2px;
+	min-height: 20px;
+	padding-top: 2px;
+	border-radius: 10px;
+	font-size: 14px;
+}
+
+button.focused {
+	background-color: $pink;
+	color: $bg;
+}
+
+button.occupied {
+	color: $pink;
+}
+
+.workspaces button:hover { background-color: $sel; }
+button.focused:hover { background-color: $pinksel; }
+button.occupied:hover { border-color:    $pinksel; }
+
+//   Volume
+
+button.vol-icon {
+	all: unset;
+	color: $magenta;
+	background-color: $bg;
+	font-size: 24px;
+	margin: 4px; 
+	border-radius: 6px;
+}
+
+button.vol-icon:hover {
+	background-color: $lbg;
+}
+
+scale trough {
+	all: unset;
+	background-color: $dbg;
+	min-height: 80px;
+	min-width: 4px;
+	border-radius: 4px;
+} 
+
+scale trough highlight {
+	all: unset;
+	background-color: $magenta;
+	border-radius: 4px;
+}
+
+// Clock
+
+.block {
+	border-radius: 4px;
+	margin: 4px;
+	background-color: #302D41;
+	padding: 2px;
+}
+
+.clock { font-size: 16px; }
+
+.ampm { color: $red; }
+
+// Powermenu
+
+.powermenu button {
+	all: unset;
+	background-color: $bg;
+	font-size: 20px;
+	margin: 4px;
+	padding-top: 1px;
+	border-radius: 6px;
+}
+
+.powermenu button:hover { background-color: $lbg; }
+button.shutdown-btn { color: $red;    }
+button.reboot-btn   { color: $green;  }
+button.suspend-btn  { color: $blue;   }
+button.logout-btn   { color: $orange; }
+button.lock-btn     { color: $yellow; }
