@@ -1,6 +1,7 @@
+(include "fixes/eww.yuck")
 (defwidget volume []
-    (eventbox   :onhover "eww update volume=true"
-                :onhoverlost "eww update volume=false"
+    (eventbox   :onhover "${eww} update volume=true"
+                :onhoverlost "${eww} update volume=false"
         (box        :class "volume"
                     :orientation "v"
                     :space-evenly false

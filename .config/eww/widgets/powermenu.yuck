@@ -1,33 +1,16 @@
-(defwidget power []
-    (eventbox :onhover "eww update shutdown=true"
-              :onhoverlost "eww update shutdown=false"
+(include "fixes/eww.yuck")
+(defwidget power-main []
+    (eventbox :onhover "${eww} update shutdown-main=true"
+              :onhoverlost "${eww} update shutdown-main=false"
         (box          :orientation "v"
                       :space-evenly "false"
                       :valign "end"
                       :vexpand "false"
                       :class "powermenu"
             (revealer     :transition "slideup"
-                          :reveal shutdown
+                          :reveal shutdown-main
                           :duration "0.5s"
-                (box        :orientation "v"
-                            :space-evenly "false"
-                    (button     :class "lock-btn"
-                                :tooltip "Lock Screen"
-                                :onclick "betterlockscreen -l dimblur"
-                                "")
-                    (button     :class "logout-btn"
-                                :tooltip "Log Out"
-                                :onclick "bspc quit"
-                                "")
-                    (button     :class "suspend-btn"
-                                :tooltip "Suspend"
-                                :onclick "betterlockscreen -l dimblur & doas zzz"
-                                "⏾")
-                    (button     :class "reboot-btn"
-                                :tooltip "Reboot"
-                                :onclick "doas shutdown -r now"
-                                "")
-                )
+                          (power)
             )
         (button     :class "shutdown-btn"
                     :tooltip "Shutdown"
@@ -37,4 +20,49 @@
     )
 )
 
-(defvar shutdown false)
+(defvar shutdown-main false)
+
+(defwidget power-alt []
+    (eventbox :onhover "${eww} update shutdown-alt=true"
+              :onhoverlost "${eww} update shutdown-alt=false"
+        (box          :orientation "v"
+                      :space-evenly "false"
+                      :valign "end"
+                      :vexpand "false"
+                      :class "powermenu"
+            (revealer     :transition "slideup"
+                          :reveal shutdown-alt
+                          :duration "0.5s"
+                          (power)
+              )
+        (button     :class "shutdown-btn"
+                    :tooltip "Shutdown"
+                    :onclick "doas shutdown -h now"
+                    "")
+        )
+    )
+)
+
+(defvar shutdown-alt false)
+
+(defwidget power [] 
+    (box        :orientation "v"
+                :space-evenly "false"
+        (button     :class "lock-btn"
+                    :tooltip "Lock Screen"
+                    :onclick "betterlockscreen -l dimblur"
+                    "")
+        (button     :class "logout-btn"
+                    :tooltip "Log Out"
+                    :onclick "bspc quit"
+                    "")
+        (button     :class "suspend-btn"
+                    :tooltip "Suspend"
+                    :onclick "betterlockscreen -l dimblur & doas zzz"
+                    "⏾")
+        (button     :class "reboot-btn"
+                    :tooltip "Reboot"
+                    :onclick "doas shutdown -r now"
+                    "")
+    )
+)

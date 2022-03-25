@@ -3,13 +3,4 @@
 
 (include "widgets/bars.yuck")
 
-(defwidget end []
-    (box  :orientation "v"
-          :space-evenly "false"
-          :valign "end"
-          (volume)
-          (clock)
-          (power)
-    )
-)
 

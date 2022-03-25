@@ -7,6 +7,16 @@
     )
 )
 
+(defwidget end-alt []
+    (box  :orientation "v"
+          :space-evenly "false"
+          :valign "end"
+          (volume)
+          (clock)
+          (power-alt)
+    )
+)
+
 (defwidget bar-alt []
     (box  :orientation "v"
           :space-evenly "false"
@@ -16,7 +26,7 @@
           (start-alt)
           (box  :valign "fill"
                 :vexpand "true")
-          (end)
+          (end-alt)
     )
 )
 

@@ -7,16 +7,25 @@
     )
 )
 
+(defwidget end-main []
+    (box  :orientation "v"
+          :space-evenly "false"
+          :valign "end"
+          (volume)
+          (clock)
+          (power-main)
+    )
+)
+
 (defwidget bar-main []
     (box  :orientation "v"
           :space-evenly "false"
-          ;:valign "center"
           :vexpand "false"
           :hexpand "false"
           (start-main)
           (box  :valign "fill"
                 :vexpand "true")
-          (end)
+          (end-main)
     )
 )
 

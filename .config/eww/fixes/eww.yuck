@@ -1,0 +1,1 @@
+(defvar eww "$HOME/.local/bin/eww")
