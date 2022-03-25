@@ -9,12 +9,12 @@ picom -b --experimental-backends &
 feh --bg-fill --no-xinerama pix/wallhaven-oxo8gl_3840x1080.png &                                                                                                                                                             
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 $HOME/.local/bin/eww daemon
-$HOME/.local/bin/eww open bar
+$HOME/.local/bin/eww open-many bar-main bar-alt
 
 bspc monitor DisplayPort-2		-d 1 2 3 4 5
 bspc monitor HDMI-A-0			-d 1 2 3 4 5
 
-bspc config border_width	 	2
+bspc config border_width	 	12
 bspc config window_gap			12
 
 bspc config top_padding			40
@@ -27,10 +27,12 @@ bspc config focused_border_color 	"#c9cbff"
 bspc config active_border_color 	"#575268"
 
 bspc config split_ratio			0.52
-bspc config clock_to_focus		none
+bspc config click_to_focus		none
 bspc config focus_follows_pointer	true
 
 bspc config pointer_modifier		mod4
 bspc config pointer_action1		move
 bspc config pointer_action2		none
 bspc config pointer_action3		resize_corner
+
+$HOME/.local/share/2bspwm

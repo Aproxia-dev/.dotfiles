@@ -1,0 +1,17 @@
+#!/bin/bash
+# neeasade
+# makes dual borders
+# depends on wmutils/opt
+
+# polyfill a script in my dots.
+_chwb2() {
+
+	chwb2 -O "0x1e1e2e" -I "0x575268" -i 2 -o 10 $(bspc query -N -n .window.\!fullscreen)
+	chwb2 -O "0x1e1e2e" -I "0xc9cbff" -i 2 -o 10 $(bspc query -N -n .window.\!fullscreen.focused)
+}
+
+_chwb2
+
+bspc subscribe node_state node_geometry node_focus | while read msg; do
+    _chwb2
+done
