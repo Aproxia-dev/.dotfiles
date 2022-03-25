@@ -321,7 +321,7 @@
 ## Note: Custom command that will be executed each time song changes. Useful for
 ## notifications etc.
 ##
-#execute_on_song_change = ""
+execute_on_song_change = /home/apro/.local/bin/album_art_script.sh && notify-send -t 5000 'Now Playing' "$(mpc -f '%artist% - %title%\n(%album%)' current)" -i /tmp/album_art.png
 #
 ##
 ## Note: Custom command that will be executed each time player state

@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + {_,shift + }d
-	rofi -show {drun,run}
+	rofi -show {drun,run -config /home/apro/.config/rofi/run.rasi}
 
 # make sxhkd reload its configuration files:
 super + {_,shift + }r
@@ -20,92 +20,75 @@ ctrl + Insert
 
 # take screenshot of focused monitor
 Insert
-	/home/apro/.scripts/scrot/monitor-screenshot.sh
+	/home/apro/.local/bin/sxhkd/fullmon-screenshot.py
 
 
 ### bspwm hotkeys
-#
-#
+
+
 # quit/restart bspwm
-#super + shift + x
-#	bspc quit
-#
+super + shift + x
+	bspc quit
+
 # close and kill
-#super + {_,shift + }q
-#	bspc node -{c,k}
-#
-# swap the current node and the biggest window
-#super + space
-#	bspc node -s biggest.window.local
-#
-#
-# state/flags
-#
-#
+super + {_,shift + }q
+	bspc node -{c,k}
+
+
+
+### state/flags
+
+
 # set the window state
-#super + {w,s,a,e}
-#	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
-#
-#
+super + {u,i,shift + space,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
 # focus/swap
-#
-#
+
+
 # focus the node in the given direction
-#super + {_,shift + }{h,j,k,l}
-#	bspc node -{f,s} {west,south,north,east}
-#
+# super + {_,shift + }{h,j,k,l}
+# 	bspc node -{f,s} {west,south,north,east}
+
 # focus the next/previous window in the current desktop
-#super + {_,shift + }c
-#	bspc node -f {next,prev}.local.!hidden.window
-#
+super + {_,shift + }{j,k}
+	bspc node -{f,s} {next,prev}.local.window
+
 # focus the other monitor
-#super + {_,shift +}Tab
-#	bspc {monitor -f next,desktop -s last.active}
-#
+super + {_,shift + }{comma,period}
+	bspc {monitor -f,node -m} {prev,next}
+
 # focus the next occupied workspace
-#alt + {_,shift + }Tab
-#	bspc desktop -f {next,prev}.occupied.local
-#
+alt + {_,shift + }Tab
+	bspc desktop -f {next,prev}.occupied.local
+
 # focus/move node to a specific desktop
-#super + {_,shift + }{1,2,3,4,5,6,7,8,9}
-#	bspc {desktop -f,node -d} {1,2,3,4,5,6,7,8,9}.local
-#
+super + {_,shift + }{plus,ecaron,scaron,ccaron,rcaron,zcaron,yacute,aacute,iacute}
+	bspc {desktop -f,node -d} {1,2,3,4,5,6,7,8,9}.local
+
 # rotate the desktop's tree
-#super + {semicolon,dead_abovering}
-#	bspc node any.local -R {90,270} 
-#
-#
-# preselect
-#
-#
-# preselect the direction
-#super + ctrl + {h,j,k,l}
-#	bspc node -p {west,south,north,east}
-#
-# preselect the ratio
-#super + ctrl + {1-9}
-#	bspc node -o 0.{1-9}
-#
-# cancel the preselection for the focused node
-#super + ctrl + space
-#	bspc node -p cancel
-#
-# cancel the preselection for the focused desktop
-#super + ctrl + shift + space
-#	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
-#
-#
-# move/resize
-#
-#
+super + {_, shift +}dead_diaeresis
+	bspc node any.local -R {90,270} 
+
+# swap the current node and the biggest window
+super + space
+	bspc node -s biggest.window.local
+
+# switch between tiled and monocle layouts
+super + {t,y}
+	bspc desktop -l {tiled,monocle}
+
+### move/resize
+
+
 # expand a window by moving one of its side outward
-#super + alt + {h,j,k,l}
-#	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
-#
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
 # contract a window by moving one of its side inward
-#super + alt + shift + {h,j,k,l}
-#	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
-#
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
 # move a floating window
-#super + {Left,Down,Up,Right}
-#	bspc node -v {-20 0,0 20,0 -20,20 0}
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}

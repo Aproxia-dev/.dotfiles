@@ -8,7 +8,8 @@ dunst &
 picom -b --experimental-backends &                                                                                                                                                                                           
 feh --bg-fill --no-xinerama pix/wallhaven-oxo8gl_3840x1080.png &                                                                                                                                                             
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
-eww open bar
+$HOME/.local/bin/eww daemon
+$HOME/.local/bin/eww open bar
 
 bspc monitor DisplayPort-2		-d 1 2 3 4 5
 bspc monitor HDMI-A-0			-d 1 2 3 4 5

@@ -28,11 +28,15 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export EDITOR=nvim
 export BROWSER=firefox
+export TERMINAL=kitty
 export BAT_THEME="Monokai Extended"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export svdir="$HOME/.service"
 
 bindkey "^[[1;5D" backward-word
 bindkey "^[[1;5C" forward-word
+bindkey "^[[3~" delete-char
+bindkey '^H' backward-kill-word
 
 CASE_SENSITIVE="false"
 
@@ -58,14 +62,14 @@ alias sudo="doas"
 alias please="doas"
 alias pls="doas"
 
-alias shutdown="shutdown -h now"
-alias reboot="shutdown -r now"
-alias sleep="systemctl suspend"
+alias shutdown="doas shutdown -h now"
+alias reboot="doas shutdown -r now"
+alias sleep="betterlockscreen -l dimblur & doas zzz"
 
-alias bai="shutdown -h now"
-alias brb="shutdown -r now"
-alias cya="systemctl suspend"
-alias zzz="systemctl suspend"
+alias bai="shutdown"
+alias brb="reboot"
+alias cya="sleep"
+alias zzz="sleep"
 
 alias vim="nvim"
 alias edit="nvim"
