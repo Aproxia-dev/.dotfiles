@@ -1,0 +1,23 @@
+#!/bin/sh
+
+case $BUTTON in
+	1) kitty -e ncmpcpp ;;
+	3) mpc toggle ;;
+	6) kitty -e nvim "$0" ;;
+esac
+
+secondline=$(mpc | awk -F: 'NR == 2 {print $2}')
+song=$(mpc --format '%artist% - %title%' current) 
+pref="🎧"
+
+case $secondline in
+	'') echo " $pref N/A"
+		exit 1 ;;
+	*)  if [[ $(mpc status | grep "\[paused\]") != '' ]]; then
+		status=""
+	    else
+		status=""
+	    fi ;;
+esac
+
+echo "$pref $song $status"

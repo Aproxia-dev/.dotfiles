@@ -1,0 +1,30 @@
+#!/bin/sh
+
+case $BUTTON in
+	1) kitty -e calcurse ;;
+	2) notify-send "📅 Clock Block" "Left Click -> Calendar\nRight Click -> Terminal Clock" ;;
+	3) kitty -e tty-clock -scC 5 ;;
+	6) kitty -e nvim "$0" ;;
+esac
+
+hour=$(date "+%I")
+case $hour in
+	01)	tpref="🕐" ;;
+	02)	tpref="🕑" ;;
+	03)	tpref="🕒" ;;
+	04)	tpref="🕓" ;;
+	05)	tpref="🕔" ;;
+	06)	tpref="🕕" ;;
+	07)	tpref="🕖" ;;
+	08)	tpref="🕗" ;;
+	09)	tpref="🕘" ;;
+	10)	tpref="🕙" ;;
+	11)	tpref="🕚" ;;
+	12)	tpref="🕛" ;;
+esac
+
+time=$(date "+%I:%M %p")
+date=$(date "+%d %b (%a)")
+dpref="📅"
+
+echo "$dpref $date | $tpref $time "
