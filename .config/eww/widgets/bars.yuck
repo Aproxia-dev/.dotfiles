@@ -1,5 +1,0 @@
-(include "widgets/powermenu.yuck")
-(include "widgets/clock.yuck")
-(include "widgets/volume.yuck")
-(include "widgets/workspaces.yuck")
-(include "widgets/launcher.yuck")

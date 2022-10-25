@@ -1,6 +1,0 @@
-(defwidget launcher []
-  (button :class "launcher"
-          :onclick "rofi -show drun"
-          :timeout "999h"
-          "")
-)

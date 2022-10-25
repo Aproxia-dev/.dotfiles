@@ -1,7 +1,0 @@
-#!/bin/sh
-
-echo ^c#fcc7ee^yuka :o^d^
-
-case $BUTTON in
-	1) notify-send "*hugs yuka!!!*" ;;
-esac

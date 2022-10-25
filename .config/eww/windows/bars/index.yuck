@@ -1,6 +1,0 @@
-(include "windows/bars/bar-main.yuck")
-(include "windows/bars/bar-alt.yuck")
-
-(include "widgets/bars.yuck")
-
-

@@ -1,7 +1,0 @@
-(defwidget workspaces-main []
-	(literal :content workspace-main))
-(deflisten workspace-main "scripts/worksp HDMI-A-0")
-
-(defwidget workspaces-alt []
-	(literal :content workspace-alt))
-(deflisten workspace-alt "scripts/worksp DisplayPort-2")

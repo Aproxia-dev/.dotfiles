@@ -1,0 +1,5 @@
+pcall(require, "luarocks.loader")
+require("awful.autofocus")
+require("error_handling")
+require("config")
+require("ui")

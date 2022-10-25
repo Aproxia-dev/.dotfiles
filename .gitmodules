@@ -1,0 +1,9 @@
+[submodule ".config/awesome/modules/bling"]
+	path = .config/awesome/modules/bling
+	url = git@github.com:BlingCorp/bling.git
+[submodule ".config/awesome/modules/rubato"]
+	path = .config/awesome/modules/rubato
+	url = git@github.com:andOrlando/rubato.git
+[submodule ".config/awesome/modules/nice"]
+	path = .config/awesome/modules/nice
+	url = git@github.com:Aproxia-dev/awesome-wm-nice.git

@@ -1,7 +1,0 @@
-#!/bin/sh
-
-if [[ $(pamixer --get-mute) == true ]]; then
-	echo	"婢"
-else
-	echo	"墳"
-fi
