@@ -40,6 +40,8 @@ bindkey '^H' backward-kill-word
 
 CASE_SENSITIVE="false"
 
+function mkcd() { mkdir -p $1; cd $1; }
+
 # aliases
 
 alias ls="exa --icons"
@@ -51,6 +53,7 @@ alias lt="ls --tree"
 alias lta="ls --tree -a"
 alias cls="clear"
 alias du="ncdu"
+alias yay="paru"
 
 alias mv="mv -i"
 alias rm="rm -i"
@@ -58,18 +61,19 @@ alias cp="cp -i"
 alias grep="grep --color=auto"
 alias mkdir="mkdir -pv"
 
-alias sudo="doas"
-alias please="doas"
-alias pls="doas"
+alias doas="sudo"
+alias please="sudo"
+alias pls="sudo"
 
-alias shutdown="doas shutdown -h now"
-alias reboot="doas shutdown -r now"
-alias sleep="betterlockscreen -l dimblur & doas zzz"
+alias shutdown="shutdown -h now"
+alias reboot="shutdown -r now"
+alias suspend="betterlockscreen -l dimblur & systemctl suspend"
+alias ncmpcpp="ncmpcpp --ignore-config-errors 2>/dev/null"
 
 alias bai="shutdown"
 alias brb="reboot"
-alias cya="sleep"
-alias zzz="sleep"
+alias cya="suspend"
+alias zzz="suspend"
 
 alias vim="nvim"
 alias edit="nvim"
@@ -80,3 +84,4 @@ alias :wq="exit"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+export PATH=$PATH:/home/apro/.spicetify
