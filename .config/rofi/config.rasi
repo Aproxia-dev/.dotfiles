@@ -12,7 +12,7 @@ configuration{
     sidebar-mode: 		false;
 }
 
-@theme "catppuccin"
+@theme "active"
 
 element-text, element-icon, {
     background-color: 		inherit;
@@ -41,7 +41,7 @@ inputbar {
 }
 
 prompt {
-    background-color: 		@pink;
+    background-color: 		@accent;
     padding: 			6px;
     text-color: 		@bg-col;
     border-radius: 		3px;
@@ -116,6 +116,6 @@ button {
 
 button selected {
   background-color: 		@bg-col;
-  text-color: 			@pink;
+  text-color: 			@accent;
 }
 

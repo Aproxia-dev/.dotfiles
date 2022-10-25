@@ -12,7 +12,7 @@ configuration {
     display-run: 		">_ ";
 }
 
-@theme "catppuccin"
+@theme "active"
 
 window {
     transparency: 		"real";
@@ -42,7 +42,7 @@ inputbar {
 }
 
 prompt {
-    background-color: 		@pink;
+    background-color: 		@accent;
     padding: 			6px;
     text-color: 		@bg-col;
     border-radius: 		3px;
@@ -89,7 +89,7 @@ element normal {
 
 element selected {
     background-color:		@bg-col-light;
-    text-color:			@pink;
+    text-color:			@accent;
 }
 
 sidebar {
@@ -101,7 +101,7 @@ sidebar {
 scrollbar {
     width:			4px;
     border:			0px;
-    handle-color:		@pink;
+    handle-color:		@accent;
     handle-width:		8px;
     padding:			0;
 }
