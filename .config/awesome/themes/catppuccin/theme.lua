@@ -4,6 +4,7 @@
 
 local awful = require("awful")
 local gc = require("gears.color")
+local icons = require("icons")
 local wibox = require("wibox")
 local theme_assets = require("beautiful.theme_assets")
 -- local xresources = require("beautiful.xresources")
@@ -69,15 +70,15 @@ theme.systray_icon_spacing = 4
 theme.menu_height = 20
 theme.menu_width  = 150
 
-theme.layout_fairh      = gc.recolor_image(conf_dir .. "icons/layouts/fairh.png", theme.accent)
-theme.layout_fairv      = gc.recolor_image(conf_dir .. "icons/layouts/fairv.png", theme.accent)
-theme.layout_floating   = gc.recolor_image(conf_dir .. "icons/layouts/floating.png", theme.accent)
-theme.layout_tilebottom = gc.recolor_image(conf_dir .. "icons/layouts/tilebottom.png", theme.accent)
-theme.layout_tile       = gc.recolor_image(conf_dir .. "icons/layouts/tile.png", theme.accent)
-theme.layout_centered   = gc.recolor_image(conf_dir .. "icons/layouts/centered.png", theme.accent)
+theme.layout_tile       = gc.recolor_image(icons.tile,       theme.accent)
+theme.layout_tilebottom = gc.recolor_image(icons.tilebottom, theme.accent)
+theme.layout_centered   = gc.recolor_image(icons.centered,   theme.accent)
+theme.layout_fairv      = gc.recolor_image(icons.fairv,      theme.accent)
+theme.layout_fairh      = gc.recolor_image(icons.fairh,      theme.accent)
+theme.layout_floating   = gc.recolor_image(icons.floating,   theme.accent)
 theme.layout_max        = wibox.widget.draw_to_image_surface (wibox.widget {
-                                  wibox.widget.imagebox(gc.recolor_image(conf_dir .. "icons/layouts/max1.png", theme.accent)), 
-                                  wibox.widget.imagebox(gc.recolor_image(conf_dir .. "icons/layouts/max2.png", theme.green )),
+                                  wibox.widget.imagebox(gc.recolor_image(icons.max1, theme.accent)), 
+                                  wibox.widget.imagebox(gc.recolor_image(icons.max2, theme.green )),
                               layout = wibox.layout.stack },
                           64, 64)
 
