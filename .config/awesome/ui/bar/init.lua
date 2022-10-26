@@ -20,6 +20,7 @@ awful.screen.connect_for_each_screen(function(s)
     taglist = require("ui.bar.widgets.taglist")(s)
     tasklist = require("ui.bar.widgets.tasklist")(s)
     volumebar = require("ui.bar.widgets.sliders.volume")(s)
+    kbdwidget = require("ui.bar.widgets.keyboard")
     systray = require("ui.bar.widgets.systray")(s) 
     clock = require("ui.bar.widgets.clock")
     layouticon = helpers.embox(
@@ -31,8 +32,8 @@ awful.screen.connect_for_each_screen(function(s)
                 awful.button({ }, 4, function () awful.layout.inc(-1) end),
                 awful.button({ }, 5, function () awful.layout.inc( 1) end)
             }
-        }
-    )
+        },
+    false, 4)
 
 
     -- Create the wibox
@@ -50,6 +51,7 @@ awful.screen.connect_for_each_screen(function(s)
 	{
         layout = wibox.layout.fixed.vertical,
     	volumebar,
+	kbdwidget,
 	systray,
 	clock,
 	layouticon
