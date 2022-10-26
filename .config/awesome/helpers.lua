@@ -11,8 +11,9 @@ helpers.rrect = function(rad)
 	end
 end
 
-helpers.embox = function(wgt, place_workaround)
+helpers.embox = function(wgt, place_workaround, inner_margin)
 	place_workaround = place_workaround or false
+	inner_margin = inner_margin or 2
 	if place_workaround == true then
 	    wgt = wibox.widget {
 		    wgt,
@@ -28,7 +29,7 @@ helpers.embox = function(wgt, place_workaround)
 	            {
                          wgt,
 			 widget  = wibox.container.margin,
-			 margins = 2
+			 margins = inner_margin
 		    },
 		    widget = wibox.container.background,
 		    bg     = beautiful.black
