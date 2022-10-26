@@ -10,3 +10,6 @@
 [submodule ".config/awesome/modules/keyboard_layout"]
 	path = .config/awesome/modules/keyboard_layout
 	url = git@github.com:echuraev/keyboard_layout.git
+[submodule ".local/src/st-flexipatch"]
+	path = .local/src/st-flexipatch
+	url = git@github.com:Aproxia-dev/st-flexipatch.git
