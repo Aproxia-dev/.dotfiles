@@ -2,6 +2,9 @@
 local awful = require("awful")
 local gears = require("gears")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+local beautiful = require("beautiful")
+local screenshot = require("modules.screenshot")
+screenshot.init(os.getenv("HOME") .. "/.screenshots/", "AweShot-", beautiful.black)
 
 require("config.menu")
 
@@ -95,11 +98,14 @@ globalkeys = gears.table.join(
 	awful.key({ "Mod1"           }, "Shift_L", function () kbdcfg.switch_next() end,
 		  {description = "switch keyboard layout", group = "keyboard"}),
 	awful.key({ "Shift"          }, "Alt_L", function () kbdcfg.switch_next() end),
-	awful.key({                  }, "Insert", function () awful.spawn.with_shell(gears.filesystem.get_xdg_data_home() .. "../bin/fullmon-screenshot.py")		end,
+	awful.key({                  }, "Insert", function ()
+						local sht = screenshot.screen() 
+						awful.spawn("xclip -selection clipboard " .. sht .. " -t image/png")
+					  	end,
 		  {description = "take a screenshot of the monitor", group = "screenshot"}),
-	awful.key({ "Control"        }, "Insert", function () awful.spawn.with_shell("scrot -fs -e 'xclip -selection clipboard -t image/png < $f && mv $f ~/.screenshots/' --line style=solid,mode=edge '%Y-%m-%d-%H.%M.%S_$wx$h.png'")		end,
+	awful.key({ "Control"        }, "Insert", function () awful.spawn.with_shell("scrot -fs -e 'xclip -selection clipboard -t image/png < $f && mv $f ~/.screenshots/' --line style=solid,mode=edge '%Y-%m-%d-%H.%M.%S_$wx$h.png'") end,
 		  {description = "take a screenshot of the selected area", group = "screenshot"}),
-	awful.key({ modkey, "Shift"  }, "s", function () awful.spawn.with_shell("scrot -fs -e 'xclip -selection clipboard -t image/png < $f && mv $f ~/.screenshots/' --line style=solid,mode=edge '%Y-%m-%d-%H.%M.%S_$wx$h.png'")		end,
+	awful.key({ modkey, "Shift"  }, "s", function () awful.spawn.with_shell("scrot -fs -e 'xclip -selection clipboard -t image/png < $f && mv $f ~/.screenshots/' --line style=solid,mode=edge '%Y-%m-%d-%H.%M.%S_$wx$h.png'") end,
 		  {description = "take a screenshot of the selected area", group = "screenshot"})
 )	
 	
