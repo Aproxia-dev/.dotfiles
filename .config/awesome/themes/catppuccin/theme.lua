@@ -1,6 +1,6 @@
----------------------------
--- Default awesome theme --
----------------------------
+-------------------------------------
+-- Apro's awesome catppuccin theme --
+-------------------------------------
 
 local awful = require("awful")
 local gc = require("gears.color")
