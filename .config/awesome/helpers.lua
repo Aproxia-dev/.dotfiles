@@ -2,6 +2,9 @@ local awful     = require("awful")
 local beautiful = require("beautiful")
 local gears     = require("gears")
 local wibox     = require("wibox")
+local color     = require("modules.color")
+local rubato    = require("modules.rubato")
+local naughty   = require("naughty")
 
 local helpers   = {}
 
@@ -11,10 +14,10 @@ helpers.rrect = function(rad)
 	end
 end
 
-helpers.embox = function(wgt, place_workaround, inner_margin)
-	place_workaround = place_workaround or false
-	inner_margin = inner_margin or 2
-	if place_workaround == true then
+helpers.embox = function(wgt, plfix, padding, hover)
+	local plfix = plfix or false
+	local padding = padding or 2
+	if plfix == true then
 	    wgt = wibox.widget {
 		    wgt,
 		    widget = wibox.container.place,
@@ -22,24 +25,49 @@ helpers.embox = function(wgt, place_workaround, inner_margin)
 		    valign = "center"
 		}
 	end
-	return wibox.widget 
+	local boxed = wibox.widget 
 	{
 	    {
 	        {
 	            {
                          wgt,
 			 widget  = wibox.container.margin,
-			 margins = inner_margin
+			 margins = padding
 		    },
 		    widget = wibox.container.background,
-		    bg     = beautiful.black
+		    bg     = beautiful.dbg,
+		    id     = "bgcol"
 		},
 		widget = wibox.container.background,
-		shape  = helpers.rrect(4)
+		shape  = helpers.rrect(4),
+		id     = "shape"
 	    },
 	    widget  = wibox.container.margin,
 	    margins = 4
 	}
+
+	if hover ~= false then
+		local dbg = color.color { hex = beautiful.dbg }
+		local lbg = color.color { hex = beautiful.lbg }
+		
+		local boxtrans = color.transition(dbg, lbg)
+		local boxanim = rubato.timed {
+			duration   = 0.2,
+			intro      = 0.1,
+			subscribed = function(pos) boxed.shape.bgcol.bg = boxtrans(pos).hex end
+		}
+		
+		
+		boxed.shape:connect_signal("mouse::enter", function()
+			boxanim.target = 1
+		end)
+		
+		boxed.shape:connect_signal("mouse::leave", function()
+			boxanim.target = 0
+		end)
+	end
+	
+	return boxed
 end
 
 

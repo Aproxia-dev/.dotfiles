@@ -9,7 +9,7 @@ return function(s)
                 widget = wibox.widget.systray,
                 base_size = 20,
                 horizontal = false,
-            }, true)
+            }, true, nil, false)
 
         if awesome.systray() > 0 then
             systray.visible = true

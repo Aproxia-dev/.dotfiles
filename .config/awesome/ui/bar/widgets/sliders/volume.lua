@@ -3,6 +3,7 @@ local gears = require("gears")
 local beautiful = require("beautiful")
 local awful = require("awful")
 local rubato = require("modules.rubato")
+local color = require("modules.color")
 local helpers = require("helpers")
 
 return function(s)
@@ -30,7 +31,8 @@ return function(s)
                 },
                 id     = "margin",
                 widget = wibox.container.margin,
-                top    = 8
+                top    = 8,
+		bottom = 8
             },
             id       = "reveal",
             widget   = wibox.container.constraint,
@@ -38,14 +40,22 @@ return function(s)
             height   = 0
         },
         {
-            widget = wibox.widget.textbox,
-            markup = "<span foreground='" .. beautiful.accent .. "'>墳</span>",
-            align  = "center",
-            valign = "center",
-            font   = "JetBrains Mono Nerd Font Mono 18",
-	    forced_height = 24,
-            id     = "button"
-        },
+	    {
+	        {
+                    widget = wibox.widget.textbox,
+                    markup = "<span foreground='" .. beautiful.accent .. "'>墳</span>",
+                    align  = "center",
+                    valign = "center",
+                    font   = "JetBrains Mono Nerd Font Mono 18",
+	            forced_height = 28
+                },
+	        widget = wibox.container.background,
+	        id     = "bgcol"
+	    },
+	    widget = wibox.container.background,
+	    shape  = helpers.rrect(4),
+	    id     = "shape"
+    	},
         layout = wibox.layout.fixed.vertical
     }
 
@@ -56,7 +66,7 @@ return function(s)
         awful.button({ }, 5, function() vol:set_value(vol.value-5) end))
     )
 
-    volbar.button:buttons(gears.table.join(
+    volbar.shape:buttons(gears.table.join(
         awful.button({ }, 1, function() awful.spawn.with_shell("kitty -e pulsemixer") end))
     )
 
@@ -79,8 +89,26 @@ return function(s)
         volume_slide.target = 0
     end)
 
+    local dbg = color.color { hex = beautiful.dbg }
+    local lbg = color.color { hex = beautiful.lbg }
+
+    local btntrans = color.transition(dbg, lbg)
+    local btnanim = rubato.timed {
+	    duration = 0.2,
+	    intro    = 0.1,
+	    subscribed = function(pos) volbar.shape.bgcol.bg = btntrans(pos).hex end
+    }
+
+    volbar.shape:connect_signal("mouse::enter", function()
+        btnanim.target = 1
+    end)
+
+    volbar.shape:connect_signal("mouse::leave", function()
+        btnanim.target = 0
+    end)
+
     vol:connect_signal("property::value", function()
 	awful.spawn.with_shell("pamixer --set-volume " .. vol:get_value())
     end)
-    return helpers.embox(volbar)
+    return helpers.embox(volbar, false, 0, false)
 end

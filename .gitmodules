@@ -13,3 +13,6 @@
 [submodule ".local/src/st-flexipatch"]
 	path = .local/src/st-flexipatch
 	url = git@github.com:Aproxia-dev/st-flexipatch.git
+[submodule ".config/awesome/modules/color"]
+	path = .config/awesome/modules/color
+	url = git@github.com:andOrlando/color.git
