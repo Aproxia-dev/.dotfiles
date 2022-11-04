@@ -53,6 +53,7 @@ alias lt="ls --tree"
 alias lta="ls --tree -a"
 alias cls="clear"
 alias du="ncdu"
+alias df="duf"
 alias yay="paru"
 
 alias mv="mv -i"
