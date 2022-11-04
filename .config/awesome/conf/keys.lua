@@ -6,7 +6,7 @@ local beautiful = require("beautiful")
 local screenshot = require("modules.screenshot")
 screenshot.init(os.getenv("HOME") .. "/.screenshots/", "AweShot-", beautiful.black)
 
-require("config.menu")
+require("conf.menu")
 
 modkey = "Mod4"
 
@@ -59,6 +59,8 @@ globalkeys = gears.table.join(
 	          {description = "open a terminal file manager", group = "launch"}),
 	awful.key({ modkey,           }, "s",      function () awful.spawn(music)			end,
 	          {description = "open a music player", group = "launch"}),
+	awful.key({ modkey,           }, "d",      function () awful.spawn("emoji-picker")		end,
+	          {description = "open an emoji picker", group = "launch"}),
 		  
 	awful.key({ modkey, "Control" }, "r", awesome.restart,
 	          {description = "reload awesome", group = "awesome"}),

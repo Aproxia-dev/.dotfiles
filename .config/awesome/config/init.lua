@@ -1,8 +1,0 @@
-require("config.defaults")
-require("config.layouts")
-require("config.tags")
-require("config.keyboard")
-require("config.keys")
-require("config.menu")
-require("config.window_behaviour")
-require("config.rules")

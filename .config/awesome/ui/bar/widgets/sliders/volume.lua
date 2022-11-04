@@ -21,6 +21,7 @@ return function(s)
                         handle_color     = beautiful.accent,
                         handle_shape     = gears.shape.circle,
                         handle_width     = 4,
+			handle_cursor    = "sb_v_double_arrow",
                         maximum          = 100,
                         minimum          = 0,
                         forced_width     = 80,
@@ -67,7 +68,7 @@ return function(s)
     )
 
     volbar.shape:buttons(gears.table.join(
-        awful.button({ }, 1, function() awful.spawn.with_shell("kitty -e pulsemixer") end))
+        awful.button({ }, 1, function() awful.spawn.with_shell(terminal .. " -e pulsemixer") end))
     )
 
     local volume_slide = rubato.timed {
@@ -101,10 +102,34 @@ return function(s)
 
     volbar.shape:connect_signal("mouse::enter", function()
         btnanim.target = 1
+	local w = mouse.current_wibox
+	if w then
+	        old_cursor, old_wibox = w.cursor, w
+	        w.cursor = "hand1"
+	end
     end)
 
     volbar.shape:connect_signal("mouse::leave", function()
         btnanim.target = 0
+	if old_wibox then
+	        old_wibox.cursor = old_cursor
+	        old_wibox = nil
+	end
+    end)
+
+    vol:connect_signal("mouse::press", function()
+	local w = mouse.current_wibox
+	if w then
+		old_cursor, old_wibox = w.cursor, w
+		w.cursor = "sb_double_arrow"
+	end
+   end)
+
+    vol:connect_signal("mouse::release", function()
+	if old_wibox then
+	        old_wibox.cursor = old_cursor
+	        old_wibox = nil
+	end
     end)
 
     vol:connect_signal("property::value", function()

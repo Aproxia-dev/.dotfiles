@@ -14,12 +14,12 @@ helpers.rrect = function(rad)
 	end
 end
 
-helpers.embox = function(wgt, plfix, padding, hover)
+helpers.embox = function(w, plfix, padding, hover)
 	local plfix = plfix or false
 	local padding = padding or 2
 	if plfix == true then
-	    wgt = wibox.widget {
-		    wgt,
+	    w = wibox.widget {
+		    w,
 		    widget = wibox.container.place,
 		    halign = "center",
 		    valign = "center"
@@ -30,7 +30,7 @@ helpers.embox = function(wgt, plfix, padding, hover)
 	    {
 	        {
 	            {
-                         wgt,
+                         w,
 			 widget  = wibox.container.margin,
 			 margins = padding
 		    },
@@ -60,10 +60,19 @@ helpers.embox = function(wgt, plfix, padding, hover)
 		
 		boxed.shape:connect_signal("mouse::enter", function()
 			boxanim.target = 1
+			local w = mouse.current_wibox
+			if w then
+				old_cursor, old_wibox = w.cursor, w
+				w.cursor = "hand1"
+			end
 		end)
 		
 		boxed.shape:connect_signal("mouse::leave", function()
 			boxanim.target = 0
+			if old_wibox then
+				old_wibox.cursor = old_cursor
+				old_wibox = nil
+			end
 		end)
 	end
 	

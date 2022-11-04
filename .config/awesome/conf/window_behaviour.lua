@@ -8,13 +8,6 @@ client.connect_signal("manage", function (c)
     -- i.e. put it at the end of others instead of setting it master.
     -- if not awesome.startup then awful.client.setslave(c) end
 
-    if c.floating then
-	    if c.transient_for == nil then
-		    awful.placement.centered(c)
-	    else
-		    awful.placement.centered(c, {parent = c.transient_for})
-	    end
-    end
     if awesome.startup
       and not c.size_hints.user_position
       and not c.size_hints.program_position then

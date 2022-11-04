@@ -69,9 +69,18 @@ return function(s)
                     }
                     self.shape:connect_signal("mouse::enter", function()
                 	    taganim.target = 1
+			    local w = mouse.current_wibox
+			    if w then
+				    old_cursor, old_wibox = w.cursor, w
+				    w.cursor = "hand1"
+			    end
                     end)
                     self.shape:connect_signal("mouse::leave", function()
                 	    taganim.target = 0
+			    if old_wibox then
+				    old_wibox.cursor = old_cursor
+				    old_wibox = nil
+			    end
                     end)
             end
         }

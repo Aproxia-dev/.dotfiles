@@ -17,7 +17,7 @@ theme = "catppuccin"
 require("themes")
 
 -- Import configuration
-require("config")
+require("conf")
 
 -- Import widgets
 require("ui")

@@ -6,8 +6,8 @@ local wibox     = require("wibox")
 local naughty   = require("naughty")
 local rubato    = require("modules.rubato")
 -- local bling     = require("modules.bling")
-require("config.menu")
-require("config.keys")
+require("conf.menu")
+require("conf.keys")
 
 awful.screen.connect_for_each_screen(function(s)
  
