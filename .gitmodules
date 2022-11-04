@@ -1,18 +1,18 @@
 [submodule ".config/awesome/modules/bling"]
 	path = .config/awesome/modules/bling
-	url = git@github.com:BlingCorp/bling.git
+	url = https://github.com/BlingCorp/bling.git
 [submodule ".config/awesome/modules/rubato"]
 	path = .config/awesome/modules/rubato
-	url = git@github.com:andOrlando/rubato.git
+	url = https://github.com/andOrlando/rubato.git
 [submodule ".config/awesome/modules/nice"]
 	path = .config/awesome/modules/nice
-	url = git@github.com:Aproxia-dev/awesome-wm-nice.git
+	url = https://github.com/Aproxia-dev/awesome-wm-nice.git
 [submodule ".config/awesome/modules/keyboard_layout"]
 	path = .config/awesome/modules/keyboard_layout
-	url = git@github.com:echuraev/keyboard_layout.git
+	url = https://github.com/echuraev/keyboard_layout.git
 [submodule ".local/src/st-flexipatch"]
 	path = .local/src/st-flexipatch
-	url = git@github.com:Aproxia-dev/st-flexipatch.git
+	url = https://github.com/Aproxia-dev/st-flexipatch.git
 [submodule ".config/awesome/modules/color"]
 	path = .config/awesome/modules/color
-	url = git@github.com:andOrlando/color.git
+	url = https://github.com/andOrlando/color.git
