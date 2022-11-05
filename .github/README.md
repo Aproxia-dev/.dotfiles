@@ -61,8 +61,6 @@ And if you're planning to use this as inspiration or help to learn how to rice A
   - Creates smooth animations with a slope curve
 - **[color](https://github.com/andOrlando/color)**
   - A clean and efficient API for color conversion in Lua
-- **[nice](https://github.com/Aproxia-dev/awesome-wm-nice)**
-  - Adds MacOS-like window decorations with seamless titlebars
 - **[bling](https://github.com/BlingCorp/bling)**
   - Adds new layouts, modules, and widgets that try to primarily focus on window management
 - **[keyboard_layout](https://github.com/echuraev/keyboard_layout)**
