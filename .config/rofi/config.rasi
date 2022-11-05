@@ -1,7 +1,7 @@
 configuration{
     modi: 			"drun";
     lines: 			5;
-    font: 			"Iosevka Nerd Font 10";
+    font: 			"JetBrainsMono Nerd Font 10";
     show-icons: 		true;
     drun-display-format: 	"{name}";
     location: 			0;

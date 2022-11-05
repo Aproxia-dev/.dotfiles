@@ -1,6 +1,6 @@
 configuration {
     modi:			"run";
-    font: 			"Iosevka Nerd Font 10";
+    font: 			"JetBrainsMono Nerd Font 10";
     location: 			8;
     fixed-num-lines: 		true;
     show-icons: 		false;
