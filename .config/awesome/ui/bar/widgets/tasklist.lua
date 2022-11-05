@@ -35,26 +35,23 @@ return function(s)
                 {
                     {
                         {
-                            {
-                                id = "icon_role",
-                                widget = wibox.widget.imagebox
-                            },
-                            widget = wibox.container.margin,
-                            margins = 3
+                            id = "icon_role",
+                            widget = wibox.widget.imagebox
                         },
-                        id = "background_role",
-                        widget = wibox.container.background
+                        widget = wibox.container.margin,
+                        margins = 3
                     },
-            	    shape  = helpers.rrect(4),
+                    id = "background_role",
                     widget = wibox.container.background
                 },
-                widget = wibox.container.margin,
-                left = 5,
-                right = 5,
-                up = 2,
-                down = 2
+                shape  = helpers.rrect(4),
+                widget = wibox.container.background
             },
-            widget = wibox.container.background
+            widget = wibox.container.margin,
+            left = 5,
+            right = 5,
+            up = 2,
+            down = 2
         }
     }
     return tasklist
