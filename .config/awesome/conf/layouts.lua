@@ -5,6 +5,7 @@ local bling = require("modules.bling")
      awful.layout.suit.tile,                                                                                                        
      awful.layout.suit.tile.bottom,                                                                                                 
      bling.layout.centered,
+     bling.layout.mstab,
      -- awful.layout.suit.fair,                                                                                                        
      -- awful.layout.suit.fair.horizontal,                                                                                             
      awful.layout.suit.floating,                                                                                                    
