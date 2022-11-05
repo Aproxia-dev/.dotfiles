@@ -1,6 +1,7 @@
 local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
+local helpers = require("helpers")
 
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
@@ -15,17 +16,13 @@ client.connect_signal("manage", function (c)
         awful.placement.no_offscreen(c)
     end
     if not c.fullscreen then
-        c.shape = function(cr,w,h)
-            gears.shape.rounded_rect(cr,w,h,8)
-        end
+	c.shape = helpers.rrect(beautiful.border_radius)
     end
 end)
 
 client.connect_signal("request::geometry", function(c)
     if not c.fullscreen and not c.maximized then
-        c.shape = function(cr,w,h)
-            gears.shape.rounded_rect(cr,w,h,8)
-        end
+	c.shape = helpers.rrect(beautiful.border_radius)
     else
 	c.shape = function(cr,w,h)
 	    gears.shape.rectangle(cr,w,h)
@@ -37,7 +34,4 @@ end)
 client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", {raise = false})
 end)
-
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}

@@ -4,9 +4,6 @@
 [submodule ".config/awesome/modules/rubato"]
 	path = .config/awesome/modules/rubato
 	url = https://github.com/andOrlando/rubato.git
-[submodule ".config/awesome/modules/nice"]
-	path = .config/awesome/modules/nice
-	url = https://github.com/Aproxia-dev/awesome-wm-nice.git
 [submodule ".config/awesome/modules/keyboard_layout"]
 	path = .config/awesome/modules/keyboard_layout
 	url = https://github.com/echuraev/keyboard_layout.git

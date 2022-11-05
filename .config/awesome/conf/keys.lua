@@ -3,6 +3,7 @@ local awful = require("awful")
 local gears = require("gears")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 local beautiful = require("beautiful")
+local tabbed = require("modules.bling.module.tabbed")
 local screenshot = require("modules.screenshot")
 screenshot.init(os.getenv("HOME") .. "/.screenshots/", "AweShot-", beautiful.black)
 
@@ -108,8 +109,21 @@ globalkeys = gears.table.join(
 	awful.key({ "Control"        }, "Insert", function () awful.spawn.with_shell("scrot -fs -e 'xclip -selection clipboard -t image/png < $f && mv $f ~/.screenshots/' --line style=solid,mode=edge '%Y-%m-%d-%H.%M.%S_$wx$h.png'") end,
 		  {description = "take a screenshot of the selected area", group = "screenshot"}),
 	awful.key({ modkey, "Shift"  }, "s", function () awful.spawn.with_shell("scrot -fs -e 'xclip -selection clipboard -t image/png < $f && mv $f ~/.screenshots/' --line style=solid,mode=edge '%Y-%m-%d-%H.%M.%S_$wx$h.png'") end,
-		  {description = "take a screenshot of the selected area", group = "screenshot"})
-)	
+		  {description = "take a screenshot of the selected area", group = "screenshot"}),
+
+	awful.key({ modkey,          }, "t", function () tabbed.pick_with_dmenu("rofi -dmenu -p \"Tabbed\" -config ~/.config/rofi/run.rasi -i") end,
+		  {description = "add a client to a tabbing group", group = "tabs"}),
+	awful.key({ modkey, "Shift"  }, "t", function () tabbed.pop() end,
+		  {description = "remove a client from a tabbing group", group = "tabs"}),
+	awful.key({ modkey,          }, "n", function () tabbed.iter( 1) end,
+		  {description = "iterate through tabs", group = "tabs"}),
+	awful.key({ modkey,          }, "p", function () tabbed.iter(-1) end,
+		  {description = "iterate through tabs", group = "tabs"}),
+	awful.key({ modkey, "Shift"  }, "n", function () tabbed.iter(-1) end,
+		  {description = "iterate through tabs", group = "tabs"}),
+	awful.key({ modkey, "Shift"  }, "p", function () tabbed.iter( 1) end,
+		  {description = "iterate through tabs", group = "tabs"})
+)
 	
 clientkeys = gears.table.join(
 	awful.key({ modkey,           }, "f",

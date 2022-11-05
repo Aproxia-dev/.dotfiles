@@ -7,10 +7,12 @@ local gc = require("gears.color")
 local icons = require("icons")
 local wibox = require("wibox")
 local theme_assets = require("beautiful.theme_assets")
--- local xresources = require("beautiful.xresources")
--- local dpi = xresources.apply_dpi
+local helpers = require("helpers")
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
 
 local gfs        = require("gears.filesystem")
+local color      = require("modules.color")
 local conf_dir   = gfs.get_configuration_dir()
 local themes_dir = conf_dir .. "themes/"
 local theme_dir  = themes_dir .. theme
@@ -53,18 +55,26 @@ theme.fg_focus      = theme.lfg
 theme.fg_urgent     = theme.bg
 theme.fg_minimize   = theme.dbg
 
+theme.border_col_normal = theme.lbg
+theme.border_col_focus  = theme.accentalt
+
 theme.taglist_bg_focus = theme.accent
 theme.taglist_fg_empty = theme.dfg
 theme.taglist_fg_occupied = theme.accent
 theme.taglist_fg_focus = theme.bg
 
-theme.useless_gap   = 8
-theme.border_width  = 2
-theme.border_normal = theme.lbg
-theme.border_focus  = theme.accentalt
-theme.border_marked = theme.alert
+theme.useless_gap = 8
+theme.border_radius = 6
+theme.border_size = 2
+theme.btnsize = 16
+theme.iconsize = 20
 theme.bg_systray = theme.dbg
 theme.systray_icon_spacing = 4
+
+theme.tabbar_disable = true
+theme.mstab_bar_padding = theme.useless_gap
+theme.mstab_border_radius = theme.border_radius
+theme.mstab_tabbar_style = "boxes"
 
 -- theme.menu_submenu_icon = themes_dir.."default/submenu.png"
 theme.menu_height = 20
@@ -73,14 +83,29 @@ theme.menu_width  = 150
 theme.layout_tile       = gc.recolor_image(icons.tile,       theme.accent)
 theme.layout_tilebottom = gc.recolor_image(icons.tilebottom, theme.accent)
 theme.layout_centered   = gc.recolor_image(icons.centered,   theme.accent)
+theme.layout_mstab      = gc.recolor_image(icons.mstab,      theme.accent)
 theme.layout_fairv      = gc.recolor_image(icons.fairv,      theme.accent)
 theme.layout_fairh      = gc.recolor_image(icons.fairh,      theme.accent)
 theme.layout_floating   = gc.recolor_image(icons.floating,   theme.accent)
-theme.layout_max        = wibox.widget.draw_to_image_surface (wibox.widget {
-                                  wibox.widget.imagebox(gc.recolor_image(icons.max1, theme.accent)), 
-                                  wibox.widget.imagebox(gc.recolor_image(icons.max2, theme.green )),
-                              layout = wibox.layout.stack },
-                          64, 64)
+theme.layout_max        = helpers.combine(icons.max1, theme.accent, icons.max2, theme.green)
+
+theme.titlebar_close_button_normal              = gc.recolor_image(icons.btn, theme.dfg)
+theme.titlebar_close_button_focus               = gc.recolor_image(icons.btn, theme.red)
+theme.titlebar_minimize_button_normal           = gc.recolor_image(icons.btn, theme.dfg)
+theme.titlebar_minimize_button_focus            = gc.recolor_image(icons.btn, theme.yellow)
+theme.titlebar_maximized_button_normal_inactive = gc.recolor_image(icons.btn, theme.dfg)
+theme.titlebar_maximized_button_focus_inactive  = gc.recolor_image(icons.btn, theme.green)
+theme.titlebar_maximized_button_focus_active    = helpers.combine(icons.btn, theme.green, icons.maxicon, theme.bg)
+theme.titlebar_maximized_button_normal_active   = helpers.combine(icons.btn, theme.green, icons.maxicon, theme.bg)
+
+theme.titlebar_close_button_focus_hover               = helpers.combine(icons.btn, (color.color { hex = theme.red    } + "0.1l").hex, icons.closeicon, theme.bg)
+theme.titlebar_close_button_normal_hover              = helpers.combine(icons.btn, (color.color { hex = theme.red    } + "0.1l").hex, icons.closeicon, theme.bg)
+theme.titlebar_minimize_button_focus_hover            = helpers.combine(icons.btn, (color.color { hex = theme.yellow } + "0.1l").hex, icons.minicon,   theme.bg)
+theme.titlebar_minimize_button_normal_hover           = helpers.combine(icons.btn, (color.color { hex = theme.yellow } + "0.1l").hex, icons.minicon,   theme.bg)
+theme.titlebar_maximized_button_focus_active_hover    = helpers.combine(icons.btn, (color.color { hex = theme.green  } + "0.1l").hex, icons.maxicon,   theme.bg)
+theme.titlebar_maximized_button_normal_active_hover   = helpers.combine(icons.btn, (color.color { hex = theme.green  } + "0.1l").hex, icons.maxicon,   theme.bg)
+theme.titlebar_maximized_button_focus_inactive_hover  = helpers.combine(icons.btn, (color.color { hex = theme.green  } + "0.1l").hex, icons.maxicon,   theme.bg)
+theme.titlebar_maximized_button_normal_inactive_hover = helpers.combine(icons.btn, (color.color { hex = theme.green  } + "0.1l").hex, icons.maxicon,   theme.bg)
 
 theme.launcher_icon     = theme_dir.."/bar/launchericon.png"
 

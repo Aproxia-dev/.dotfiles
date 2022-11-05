@@ -6,6 +6,7 @@ icons = {
 	tile       = dir .. "layouts/tile.png",
 	tilebottom = dir .. "layouts/tilebottom.png",
 	centered   = dir .. "layouts/centered.png",
+	mstab      = dir .. "layouts/mstab.png",
 	fairv      = dir .. "layouts/fairv.png",
 	fairh      = dir .. "layouts/fairh.png",
 	floating   = dir .. "layouts/floating.png",
@@ -20,6 +21,12 @@ icons = {
 	flag_fr    = dir .. "kblayouts/flag_fr.svg",
 	flag_ru    = dir .. "kblayouts/flag_ru.svg",
 	flag_jp    = dir .. "kblayouts/flag_jp.svg",
+	
+	-- titlebar buttons
+	btn        = dir .. "titlebar/button.svg",
+	closeicon  = dir .. "titlebar/closeicon.svg",
+	maxicon    = dir .. "titlebar/maxicon.svg",
+	minicon    = dir .. "titlebar/minicon.svg",
 
 }
 

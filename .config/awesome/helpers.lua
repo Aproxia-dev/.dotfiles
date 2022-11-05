@@ -8,10 +8,32 @@ local naughty   = require("naughty")
 
 local helpers   = {}
 
+helpers.rect = function()
+	return function(cr,w,h)
+		gears.shape.rectangle(cr,w,h)
+	end
+end
+
 helpers.rrect = function(rad)
 	return function(cr,w,h)
 		gears.shape.rounded_rect(cr,w,h,rad)
 	end
+end
+
+helpers.prrect = function(rad,tl,tr,br,bl)
+	return function(cr,w,h)
+		gears.shape.partially_rounded_rect(cr,w,h,tl,tr,br,bl,rad)
+	end
+end
+
+helpers.combine = function(img1,col1,img2,col2,w,h)
+	local w = w or 64
+	local h = h or 64
+	return wibox.widget.draw_to_image_surface (wibox.widget {
+		wibox.widget.imagebox(gears.color.recolor_image(img1,col1)),
+		wibox.widget.imagebox(gears.color.recolor_image(img2,col2)),
+		layout = wibox.layout.stack },
+		w,h)
 end
 
 helpers.embox = function(w, plfix, padding, hover)
