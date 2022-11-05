@@ -92,6 +92,14 @@ Keybinds with the ✒️ icon can be easily changed in the `conf/defaults.lua` f
 | <kbd>Super</kbd> + <kbd>q</kbd> | close |
 | <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>,</kbd> / <kbd>.</kbd> | move to prev/next screen |
 
+<h3>Tab Keybinds</h3>
+
+| <samp>Keybind</samp> | <samp>Action</samp> |
+| ------- | ------ |
+| <kbd>Super</kbd> + <kbd>t</kbd> | add a client to a tabbing group |
+| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>t</kbd> | remove a client from a tabbing group |
+| <kbd>Super</kbd> (+ <kbd>Shift</kbd>) + <kbd>n</kbd> / <kbd>p</kbd> | iterate through tabs |
+
 <h3>Rofi Keybinds</h3>
 
 | <samp>Keybind</samp> | <samp>Action</samp> |
@@ -115,6 +123,7 @@ Keybinds with the ✒️ icon can be easily changed in the `conf/defaults.lua` f
 | <kbd>Super</kbd> + <kbd>e</kbd> | open a file manager <sup>✒️</sup> |
 | <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>e</kbd> | open a terminal file manager <sup>✒️</sup> |
 | <kbd>Super</kbd> + <kbd>s</kbd> | open a music player <sup>✒️</sup> |
+| <kbd>Super</kbd> + <kbd>d</kbd> | open an emoji picker <sup>✒️</sup> |
 
 <h3>Layout Keybinds</h3>
 
@@ -178,7 +187,7 @@ Keybinds with the ✒️ icon can be easily changed in the `conf/defaults.lua` f
    - For **Arch** <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Archlinux-icon-crystal-64.svg" alt="arch linux" width="16" height="16"/> users:
      - *Assuming your AUR helper is* [`paru`](https://github.com/Morganamilo/paru)*, run:*
        ```
-       paru -S awesome-git rofi pipewire pipewire-pulse wireplumber pamixer pulsemixer scrot xclip zsh neovim firefox pcmanfm-gtk3 ranger mailspring spotify feh nerd-fonts-jetbrains-mono ttf-twemoji yadm starship bat exa ncdu duf zsh-syntax-highlighting zsh-autosuggestions
+       paru -S awesome-git rofi pipewire pipewire-pulse wireplumber pamixer pulsemixer scrot xclip zsh neovim firefox pcmanfm-gtk3 ranger mailspring spotify feh nerd-fonts-jetbrains-mono ttf-twemoji yadm starship bat exa ncdu duf zsh-syntax-highlighting zsh-autosuggestions x11-emoji-picker-git
        ```
    - For **anyone else** <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux" width="16" height="16" />:
      - :warning: &nbsp; <samp><b>Sorry gamers, too lazy to look for packages on distros I don't use personally... Look for yourselves and maybe make an issue if you want me to add your fav distro and I'll think about it!</b></samp> &nbsp; :warning:

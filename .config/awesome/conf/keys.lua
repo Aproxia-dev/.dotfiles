@@ -60,7 +60,7 @@ globalkeys = gears.table.join(
 	          {description = "open a terminal file manager", group = "launch"}),
 	awful.key({ modkey,           }, "s",      function () awful.spawn(music)			end,
 	          {description = "open a music player", group = "launch"}),
-	awful.key({ modkey,           }, "d",      function () awful.spawn("emoji-picker")		end,
+	awful.key({ modkey,           }, "d",      function () awful.spawn(emoji_picker)		end,
 	          {description = "open an emoji picker", group = "launch"}),
 		  
 	awful.key({ modkey, "Control" }, "r", awesome.restart,
