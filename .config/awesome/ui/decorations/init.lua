@@ -183,66 +183,67 @@ client.connect_signal("request::titlebars", function(c)
 		shape = helpers.prrect(beautiful.border_radius, false, false, true, true),
 		bg = beautiful.border_col_normal,
 	})
-end)
 
-awesome.connect_signal("bling::tabbed::update", function(obj)
-	if #obj.clients == 1 or nil then
-		for _, c in ipairs(obj.clients) do
-			awful.titlebar(c, { position = "bottom", size = beautiful.border_radius * 2 })
+	awesome.connect_signal("bling::tabbed::update", function(obj)
+		if #obj.clients == 1 or nil then
+			for _, c in ipairs(obj.clients) do
+				awful.titlebar(c, { position = "bottom", size = beautiful.border_radius * 2 })
+			end
+		elseif #obj.clients > 1 then
+			for _, c in ipairs(obj.clients) do
+				awful.titlebar(c, { position = "bottom", size = 30 })
+			end
 		end
-	elseif #obj.clients > 1 then
-		for _, c in ipairs(obj.clients) do
-			awful.titlebar(c, { position = "bottom", size = 30 })
-		end
-	end
-end)
-
-awesome.connect_signal("bling::tabbed::client_removed", function(obj, c)
-	awful.titlebar(c, { position = "bottom", size = beautiful.border_radius * 2 })
-end)
-
-local tabcheck = function(c)
-	if c.bling_tabbed == nil then
-		return beautiful.border_radius * 2
-	else
-		if #c.bling_tabbed.clients == 1 then
-			bling.module.tabbed.remove(c)
+	end)
+	
+	awesome.connect_signal("bling::tabbed::client_removed", function(obj, c)
+		awful.titlebar(c, { position = "bottom", size = beautiful.border_radius * 2 })
+	end)
+	
+	local tabcheck = function(c)
+		if c.bling_tabbed == nil then
 			return beautiful.border_radius * 2
 		else
-			return 30
+			if #c.bling_tabbed.clients == 1 then
+				bling.module.tabbed.remove(c)
+				return beautiful.border_radius * 2
+			else
+				return 30
+			end
 		end
 	end
-end
 
-client.connect_signal("focus", function(c)
-	local bs = tabcheck(c)
-	awful.titlebar(c, { position = "left",   bg = beautiful.border_col_focus, size = beautiful.border_size })
-	awful.titlebar(c, { position = "right",  bg = beautiful.border_col_focus, size = beautiful.border_size })
-	awful.titlebar(c, { position = "top",    size = 24 }).widget.bg = beautiful.border_col_focus 
-	awful.titlebar(c, { position = "bottom", size = bs }).widget.bg = beautiful.border_col_focus
+	client.connect_signal("focus", function(c)
+		local bs = tabcheck(c)
+		awful.titlebar(c, { position = "left",   bg = beautiful.border_col_focus, size = beautiful.border_size })
+		awful.titlebar(c, { position = "right",  bg = beautiful.border_col_focus, size = beautiful.border_size })
+		awful.titlebar(c, { position = "top",    size = 24 }).widget.bg = beautiful.border_col_focus 
+		awful.titlebar(c, { position = "bottom", size = bs }).widget.bg = beautiful.border_col_focus
+	end)
+
+	client.connect_signal("unfocus", function(c)
+		local bs = tabcheck(c)
+		awful.titlebar(c, { position = "left",   bg = beautiful.border_col_normal, size = beautiful.border_size })
+		awful.titlebar(c, { position = "right",  bg = beautiful.border_col_normal, size = beautiful.border_size })
+		awful.titlebar(c, { position = "top",    size = 24 }).widget.bg = beautiful.border_col_normal 
+		awful.titlebar(c, { position = "bottom", size = bs }).widget.bg = beautiful.border_col_normal
+	end)
+
+	client.connect_signal("request::geometry", function(c)
+		local bs = tabcheck(c)
+		if c.maximized then
+			awful.titlebar(c, { position = "top",    size = 24 }).widget.shape          = helpers.rect()
+			awful.titlebar(c, { position = "top",    size = 24 }).widget.lol.lmao.shape = helpers.rect()
+			awful.titlebar(c, { position = "bottom", size = bs }).widget.shape          = helpers.rect()
+			awful.titlebar(c, { position = "bottom", size = bs }).widget.lol.lmao.shape = helpers.rect()
+		else
+			awful.titlebar(c, { position = "top",    size = 24 }).widget.shape          = helpers.prrect(beautiful.border_radius, true, true, false, false)
+			awful.titlebar(c, { position = "top",    size = 24 }).widget.lol.lmao.shape = helpers.prrect(beautiful.border_radius, true, true, false, false)
+			awful.titlebar(c, { position = "bottom", size = bs }).widget.shape          = helpers.prrect(beautiful.border_radius, false, false, true, true)
+			awful.titlebar(c, { position = "bottom", size = bs }).widget.lol.lmao.shape = helpers.prrect(beautiful.border_radius, false, false, true, true)
+		end
+	end)
 end)
 
-client.connect_signal("unfocus", function(c)
-	local bs = tabcheck(c)
-	awful.titlebar(c, { position = "left",   bg = beautiful.border_col_normal, size = beautiful.border_size })
-	awful.titlebar(c, { position = "right",  bg = beautiful.border_col_normal, size = beautiful.border_size })
-	awful.titlebar(c, { position = "top",    size = 24 }).widget.bg = beautiful.border_col_normal 
-	awful.titlebar(c, { position = "bottom", size = bs }).widget.bg = beautiful.border_col_normal
-end)
-
-client.connect_signal("request::geometry", function(c)
-	local bs = tabcheck(c)
-	if c.maximized then
-		awful.titlebar(c, { position = "top",    size = 24 }).widget.shape          = helpers.rect()
-		awful.titlebar(c, { position = "top",    size = 24 }).widget.lol.lmao.shape = helpers.rect()
-		awful.titlebar(c, { position = "bottom", size = bs }).widget.shape          = helpers.rect()
-		awful.titlebar(c, { position = "bottom", size = bs }).widget.lol.lmao.shape = helpers.rect()
-	else
-		awful.titlebar(c, { position = "top",    size = 24 }).widget.shape          = helpers.prrect(beautiful.border_radius, true, true, false, false)
-		awful.titlebar(c, { position = "top",    size = 24 }).widget.lol.lmao.shape = helpers.prrect(beautiful.border_radius, true, true, false, false)
-		awful.titlebar(c, { position = "bottom", size = bs }).widget.shape          = helpers.prrect(beautiful.border_radius, false, false, true, true)
-		awful.titlebar(c, { position = "bottom", size = bs }).widget.lol.lmao.shape = helpers.prrect(beautiful.border_radius, false, false, true, true)
-	end
-end)
 
 
