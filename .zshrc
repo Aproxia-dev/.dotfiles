@@ -69,7 +69,6 @@ alias pls="sudo"
 alias shutdown="shutdown -h now"
 alias reboot="shutdown -r now"
 alias suspend="betterlockscreen -l dimblur & systemctl suspend"
-alias ncmpcpp="ncmpcpp --ignore-config-errors 2>/dev/null"
 
 alias bai="shutdown"
 alias brb="reboot"
