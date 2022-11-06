@@ -44,6 +44,36 @@ client.connect_signal("request::titlebars", function(c)
 					},
 					{ -- Middle
 						layout = wibox.layout.flex.horizontal,
+						buttons = {
+							awful.button({
+								modifiers = { },
+								button = 1,
+								on_press = function()
+									c:activate { context = "mouse_click" }
+									if not c.maximized then
+										awful.mouse.client.move(c)
+									end
+								end,
+							}),
+							awful.button({
+								modifiers = { },
+								button = 2,
+								on_press = function()
+									c:activate { context = "mouse_click" }
+									c.floating = not c.floating
+								end,
+							}),
+							awful.button({
+								modifiers = { },
+								button = 3,
+								on_press = function()
+									c:activate { context = "mouse_click" }
+									if not c.maximized then
+										awful.mouse.client.resize(c)
+									end
+								end,
+							}),
+						},
 						{
 							widget = awful.titlebar.widget.titlewidget(c),
 							align = "center",

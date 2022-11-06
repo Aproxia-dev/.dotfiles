@@ -1,2 +1,3 @@
 require("ui.bar")
-require("ui.titlebars")
+require("ui.decorations")
+require("ui.notifications")
