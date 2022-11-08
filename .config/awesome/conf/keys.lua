@@ -98,9 +98,12 @@ globalkeys = gears.table.join(
 	        {description = "restore minimized", group = "flags"}),
 	awful.key({ modkey           }, "a", function () kbdcfg.switch_next() end,
 		  {description = "switch keyboard layout", group = "keyboard"}),
-	awful.key({ "Mod1"           }, "Shift_L", function () kbdcfg.switch_next() end,
-		  {description = "switch keyboard layout", group = "keyboard"}),
-	awful.key({ "Shift"          }, "Alt_L", function () kbdcfg.switch_next() end),
+---	Windows' legacy keyboard switching keybinds
+--	   These can mess with DreymaR's extend layer quite a bit so I keep it disabled
+--
+--	awful.key({ "Mod1"           }, "Shift_L", function () kbdcfg.switch_next() end,
+--		  {description = "switch keyboard layout", group = "keyboard"}),
+--	awful.key({ "Shift"          }, "Alt_L", function () kbdcfg.switch_next() end),
 	awful.key({                  }, "Insert", function ()
 						local sht = screenshot.screen() 
 						awful.spawn("xclip -selection clipboard " .. sht .. " -t image/png")
