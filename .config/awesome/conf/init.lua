@@ -1,4 +1,5 @@
 require("conf.defaults")
+require("conf.autostart")
 require("conf.layouts")
 require("conf.tags")
 require("conf.keyboard")

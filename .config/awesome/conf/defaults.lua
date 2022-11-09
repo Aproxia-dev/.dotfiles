@@ -9,3 +9,5 @@ emoji_picker = "emoji-picker"
 
 editor_cmd = terminal .. " -e " .. editor
 termfiles_cmd = terminal .. " -e " .. termfiles
+
+laptop = true
