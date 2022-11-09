@@ -2,11 +2,11 @@ local awful = require("awful")
 
 local autostart = { }
 local desktop_autostart = {
-	"picom --experimental-backends --backend \"glx\"",
+	"picom -b --backend \"glx\"",
 }
 local laptop_autostart = {
 	"nm-applet",
-	"picom --experimental-backends --backend \"xrender\"",
+	"picom -b --backend \"xrender\"",
 }
 if laptop then
 	for _, app in ipairs(laptop_autostart) do
