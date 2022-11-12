@@ -37,24 +37,50 @@ awful.screen.connect_for_each_screen(function(s)
 
 
     -- Create the wibox
-    s.wibar = awful.wibar({ position = "left", screen = s, width = 36 })
+    s.wibar = awful.wibar({
+	    bg = "#00000000",
+	    position = "left",
+	    screen = s,
+	    width = 36 + 2 * beautiful.border_size,
+	    height = s.geometry.height - (2 * beautiful.useless_gap),
+	    margins = {
+		left   = beautiful.useless_gap,
+		top    = beautiful.useless_gap,
+		bottom = beautiful.useless_gap,
+	    	right  = 0,
+	    }
+    })
 
     -- Add widgets to the wibox
     s.wibar:setup {
-        layout = wibox.layout.align.vertical,
-        { -- Top widgets
-            layout = wibox.layout.fixed.vertical,
-            barmenu,
-            taglist
-        },
-        tasklist,
+	widget = wibox.container.background,
+	shape  = helpers.rrect(beautiful.border_radius),
+	bg     = beautiful.lbg,
 	{
-        layout = wibox.layout.fixed.vertical,
-    	volumebar,
-	kbdwidget,
-	systray,
-	clock,
-	layouticon
+	    widget  = wibox.container.margin,
+	    margins = beautiful.border_size,
+	    {
+		widget = wibox.container.background,
+		shape  = helpers.rrect(beautiful.border_radius - beautiful.border_size),
+		bg     = beautiful.bg,
+		{
+	            layout = wibox.layout.align.vertical,
+	            { -- Top widgets
+	                layout = wibox.layout.fixed.vertical,
+	                barmenu,
+	                taglist
+	            },
+	            tasklist,
+	            {
+	                layout = wibox.layout.fixed.vertical,
+	                volumebar,
+	                kbdwidget,
+	                systray,
+	                clock,
+	                layouticon
+	            }
+		}
+    	    }
 	}
     }
 end)
