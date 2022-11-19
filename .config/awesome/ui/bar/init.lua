@@ -15,7 +15,7 @@ awful.screen.connect_for_each_screen(function(s)
         awful.widget.launcher({ image = beautiful.launcher_icon,
                                 menu = menu }),
         widget = wibox.container.margin,
-        margins = 4
+        margins = 4 + beautiful.launcher_padding
     }
     taglist = require("ui.bar.widgets.taglist")(s)
     tasklist = require("ui.bar.widgets.tasklist")(s)
