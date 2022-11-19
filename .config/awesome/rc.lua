@@ -13,7 +13,7 @@ require("awful.autofocus") -- This thing's gonna get deprecated soon lmao
 require("error_handling") -- Notify the user if there was an error
 
 -- Initialize theme
-theme = "catppuccin"
+theme = "decayed-nord"
 require("themes")
 
 -- Import configuration
