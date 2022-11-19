@@ -112,11 +112,6 @@ theme.launcher_icon     = theme_dir.."/bar/launchericon.png"
 
 awful.spawn.with_shell("feh --bg-fill --no-xinerama " .. theme_dir .. "/wall.png")
 
--- Generate Awesome icon:
-theme.awesome_icon = theme_assets.awesome_icon(
-    theme.menu_height, "#585b70", theme.bg
-)
-
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
