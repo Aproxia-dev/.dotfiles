@@ -66,6 +66,7 @@ theme.taglist_fg_focus = theme.bg
 theme.useless_gap = 8
 theme.border_radius = 6
 theme.border_size = 2
+theme.border_width = 0
 theme.btnsize = 16
 theme.iconsize = 20
 theme.bg_systray = theme.dbg
