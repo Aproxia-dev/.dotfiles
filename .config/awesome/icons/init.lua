@@ -1,5 +1,6 @@
-local gfs = require("gears.filesystem")
-local dir = gfs.get_configuration_dir() .. "icons/"
+local spawn = require("awful.spawn")
+local gfs   = require("gears.filesystem")
+local dir   = gfs.get_configuration_dir() .. "icons/"
 
 icons = {
 	-- window layouts
@@ -28,6 +29,13 @@ icons = {
 	maxicon    = dir .. "titlebar/maxicon.svg",
 	minicon    = dir .. "titlebar/minicon.svg",
 
+
 }
+
+-- distro
+icons.distro = dir .. "distros/" .. io.popen("sh -c 'source /etc/os-release; echo $ID'"):read("*l") .. ".svg"
+if gfs.file_readable(icons.distro) ~= true then
+	icons.distro = dir .. "distros/generic.svg"
+end
 
 return icons
