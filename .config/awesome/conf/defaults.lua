@@ -11,3 +11,7 @@ editor_cmd = terminal .. " -e " .. editor
 termfiles_cmd = terminal .. " -e " .. termfiles
 
 laptop = true
+
+scrkey = { mod = nil,   key = "Print" }
+-- scrkey = { mod = "Mod3", key = "Return" }
+--- I don't have Print Screen on my Desktop keyboard shut up >:(
