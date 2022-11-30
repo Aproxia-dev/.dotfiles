@@ -24,14 +24,13 @@ if which bat > /dev/null; then
 	alias less="bat"
 fi
 
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 export EDITOR=nvim
 export BROWSER=firefox
-export TERMINAL=kitty
-export BAT_THEME="Monokai Extended"
+export TERMINAL=st
+export BAT_THEME="Catppuccin-mocha"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export svdir="$HOME/.service"
+export SUDO_PROMPT=$'[\033[35m%u\033[0m] passwd: '
 
 bindkey "^[[1;5D" backward-word
 bindkey "^[[1;5C" forward-word
@@ -40,6 +39,7 @@ bindkey "^[[3~" delete-char
 CASE_SENSITIVE="false"
 
 function mkcd() { mkdir -p $1; cd $1; }
+function command_not_found_handler() { printf '\033[31mError\033[0m: Command "\033[31;1;5m%s\033[0m" not found.\n' "$0"; return 127; }
 
 # aliases
 
@@ -83,4 +83,3 @@ alias :wq="exit"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-export PATH=$PATH:/home/apro/.spicetify

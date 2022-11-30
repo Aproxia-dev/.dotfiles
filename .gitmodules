@@ -13,3 +13,9 @@
 [submodule ".config/awesome/modules/color"]
 	path = .config/awesome/modules/color
 	url = https://github.com/andOrlando/color.git
+[submodule "/home/apro/.config/ranger/plugins/ranger_devicons"]
+	path = /home/apro/.config/ranger/plugins/ranger_devicons
+	url = https://github.com/alexanderjeurissen/ranger_devicons
+[submodule ".config/awesome/modules/battery_widget"]
+	path = .config/awesome/modules/battery_widget
+	url = https://github.com/Aire-One/awesome-battery_widget.git
