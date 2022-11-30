@@ -215,32 +215,38 @@ client.connect_signal("request::titlebars", function(c)
 
 	client.connect_signal("focus", function(c)
 		local bs = tabcheck(c)
-		awful.titlebar(c, { position = "left",   bg = beautiful.border_col_focus, size = beautiful.border_size })
-		awful.titlebar(c, { position = "right",  bg = beautiful.border_col_focus, size = beautiful.border_size })
-		awful.titlebar(c, { position = "top",    size = 24 }).widget.bg = beautiful.border_col_focus 
-		awful.titlebar(c, { position = "bottom", size = bs }).widget.bg = beautiful.border_col_focus
+		if c.requests_no_titlebar ~= true then
+			awful.titlebar(c, { position = "left",   bg = beautiful.border_col_focus, size = beautiful.border_size })
+			awful.titlebar(c, { position = "right",  bg = beautiful.border_col_focus, size = beautiful.border_size })
+			awful.titlebar(c, { position = "top",    size = 24 }).widget.bg = beautiful.border_col_focus 
+			awful.titlebar(c, { position = "bottom", size = bs }).widget.bg = beautiful.border_col_focus
+		end
 	end)
 
 	client.connect_signal("unfocus", function(c)
 		local bs = tabcheck(c)
-		awful.titlebar(c, { position = "left",   bg = beautiful.border_col_normal, size = beautiful.border_size })
-		awful.titlebar(c, { position = "right",  bg = beautiful.border_col_normal, size = beautiful.border_size })
-		awful.titlebar(c, { position = "top",    size = 24 }).widget.bg = beautiful.border_col_normal 
-		awful.titlebar(c, { position = "bottom", size = bs }).widget.bg = beautiful.border_col_normal
+		if c.requests_no_titlebar ~= true then
+			awful.titlebar(c, { position = "left",   bg = beautiful.border_col_normal, size = beautiful.border_size })
+			awful.titlebar(c, { position = "right",  bg = beautiful.border_col_normal, size = beautiful.border_size })
+			awful.titlebar(c, { position = "top",    size = 24 }).widget.bg = beautiful.border_col_normal 
+			awful.titlebar(c, { position = "bottom", size = bs }).widget.bg = beautiful.border_col_normal
+		end
 	end)
 
 	client.connect_signal("request::geometry", function(c)
 		local bs = tabcheck(c)
-		if c.maximized then
-			awful.titlebar(c, { position = "top",    size = 24 }).widget.shape          = helpers.rect()
-			awful.titlebar(c, { position = "top",    size = 24 }).widget.lol.lmao.shape = helpers.rect()
-			awful.titlebar(c, { position = "bottom", size = bs }).widget.shape          = helpers.rect()
-			awful.titlebar(c, { position = "bottom", size = bs }).widget.lol.lmao.shape = helpers.rect()
-		else
-			awful.titlebar(c, { position = "top",    size = 24 }).widget.shape          = helpers.prrect(beautiful.border_radius, true, true, false, false)
-			awful.titlebar(c, { position = "top",    size = 24 }).widget.lol.lmao.shape = helpers.prrect(beautiful.border_radius, true, true, false, false)
-			awful.titlebar(c, { position = "bottom", size = bs }).widget.shape          = helpers.prrect(beautiful.border_radius, false, false, true, true)
-			awful.titlebar(c, { position = "bottom", size = bs }).widget.lol.lmao.shape = helpers.prrect(beautiful.border_radius, false, false, true, true)
+		if c.requests_no_titlebar ~= true then
+			if c.maximized then
+				awful.titlebar(c, { position = "top",    size = 24 }).widget.shape          = helpers.rect()
+				awful.titlebar(c, { position = "top",    size = 24 }).widget.lol.lmao.shape = helpers.rect()
+				awful.titlebar(c, { position = "bottom", size = bs }).widget.shape          = helpers.rect()
+				awful.titlebar(c, { position = "bottom", size = bs }).widget.lol.lmao.shape = helpers.rect()
+			else
+				awful.titlebar(c, { position = "top",    size = 24 }).widget.shape          = helpers.prrect(beautiful.border_radius, true, true, false, false)
+				awful.titlebar(c, { position = "top",    size = 24 }).widget.lol.lmao.shape = helpers.prrect(beautiful.border_radius, true, true, false, false)
+				awful.titlebar(c, { position = "bottom", size = bs }).widget.shape          = helpers.prrect(beautiful.border_radius, false, false, true, true)
+				awful.titlebar(c, { position = "bottom", size = bs }).widget.lol.lmao.shape = helpers.prrect(beautiful.border_radius, false, false, true, true)
+			end
 		end
 	end)
 end)

@@ -1,7 +1,8 @@
+local ruled = require("ruled")
 local awful = require("awful")
 local beautiful = require("beautiful")
 
-awful.rules.rules = {
+ruled.client.append_rules {
     -- All clients will match this rule.
     { rule = { },
       properties = { border_width = beautiful.border_width,
@@ -11,7 +12,7 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
+                     placement = awful.placement.centered+awful.placement.no_offscreen+awful.placement.no_overlap
      }
     },
 
@@ -47,7 +48,10 @@ awful.rules.rules = {
       }, properties = { floating = true }},
 
     -- Add titlebars to normal clients and dialogs
-    { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
+    { rule_any = {
+	    type = { "normal", "dialog" },
+	    properties = { requests_no_titlebar = false }
+      },
+      properties = { titlebars_enabled = true }
     }
 }
