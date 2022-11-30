@@ -19,10 +19,10 @@ awful.screen.connect_for_each_screen(function(s)
     }
     taglist = require("ui.bar.widgets.taglist")(s)
     tasklist = require("ui.bar.widgets.tasklist")(s)
+    systray = require("ui.bar.widgets.systray")(s) 
+    battery = nil; if laptop then battery = require("ui.bar.widgets.battery") end
     volumebar = require("ui.bar.widgets.sliders.volume")(s)
     kbdwidget = require("ui.bar.widgets.keyboard")
-    systray = require("ui.bar.widgets.systray")(s) 
-    clock = require("ui.bar.widgets.clock")
     layouticon = helpers.embox(
         awful.widget.layoutbox {
             screen  = s,
@@ -31,9 +31,10 @@ awful.screen.connect_for_each_screen(function(s)
                 awful.button({ }, 3, function () awful.layout.inc(-1) end),
                 awful.button({ }, 4, function () awful.layout.inc(-1) end),
                 awful.button({ }, 5, function () awful.layout.inc( 1) end)
-            }
+            },
         },
-    false, 4)
+    false, 6, nil, false)
+    clock = require("ui.bar.widgets.clock")
 
 
     -- Create the wibox
@@ -73,11 +74,15 @@ awful.screen.connect_for_each_screen(function(s)
 	            tasklist,
 	            {
 	                layout = wibox.layout.fixed.vertical,
+	                systray,
+			battery,
+			helpers.embox({
+			layout = wibox.layout.fixed.vertical,
+			spacing = 2,
 	                volumebar,
 	                kbdwidget,
-	                systray,
+	                layouticon}, nil, 0, false),
 	                clock,
-	                layouticon
 	            }
 		}
     	    }

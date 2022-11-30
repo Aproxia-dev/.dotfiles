@@ -36,7 +36,7 @@ helpers.combine = function(img1,col1,img2,col2,w,h)
 		w,h)
 end
 
-helpers.embox = function(w, plfix, padding, hover)
+helpers.embox = function(w, plfix, padding, hover_effects, have_margin)
 	local plfix = plfix or false
 	local padding = padding or 2
 	if plfix == true then
@@ -47,6 +47,13 @@ helpers.embox = function(w, plfix, padding, hover)
 		    valign = "center"
 		}
 	end
+
+	local margin
+
+	if have_margin ~= false then
+		margin = 4
+	end
+
 	local boxed = wibox.widget 
 	{
 	    {
@@ -65,10 +72,10 @@ helpers.embox = function(w, plfix, padding, hover)
 		id     = "shape"
 	    },
 	    widget  = wibox.container.margin,
-	    margins = 4
+	    margins = margin
 	}
 
-	if hover ~= false then
+	if hover_effects ~= false then
 		local dbg = color.color { hex = beautiful.dbg }
 		local lbg = color.color { hex = beautiful.lbg }
 		
@@ -76,7 +83,9 @@ helpers.embox = function(w, plfix, padding, hover)
 		local boxanim = rubato.timed {
 			duration   = 0.2,
 			intro      = 0.1,
-			subscribed = function(pos) boxed.shape.bgcol.bg = boxtrans(pos).hex end
+			subscribed = function(pos)
+				boxed.shape.bgcol.bg = boxtrans(pos).hex
+			end
 		}
 		
 		

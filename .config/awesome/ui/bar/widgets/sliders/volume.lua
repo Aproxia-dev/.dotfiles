@@ -135,5 +135,5 @@ return function(s)
     vol:connect_signal("property::value", function()
 	awful.spawn.with_shell("pamixer --set-volume " .. vol:get_value())
     end)
-    return helpers.embox(volbar, false, 0, false)
+    return helpers.embox(volbar, false, 0, false, false)
 end

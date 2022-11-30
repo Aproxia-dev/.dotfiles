@@ -29,7 +29,8 @@ icons = {
 	maxicon    = dir .. "titlebar/maxicon.svg",
 	minicon    = dir .. "titlebar/minicon.svg",
 
-
+	-- battery icons
+	charging   = dir .. "battery/charging.svg",
 }
 
 -- distro
