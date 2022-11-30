@@ -108,7 +108,8 @@ theme.titlebar_maximized_button_normal_active_hover   = helpers.combine(icons.bt
 theme.titlebar_maximized_button_focus_inactive_hover  = helpers.combine(icons.btn, (color.color { hex = theme.green  } + "0.1l").hex, icons.maxicon,   theme.bg)
 theme.titlebar_maximized_button_normal_inactive_hover = helpers.combine(icons.btn, (color.color { hex = theme.green  } + "0.1l").hex, icons.maxicon,   theme.bg)
 
-theme.launcher_icon     = theme_dir.."/bar/launchericon.png"
+theme.launcher_icon    = theme_dir.."/bar/launchericon.png"
+theme.launcher_padding = 0
 
 awful.spawn.with_shell("feh --bg-fill --no-xinerama " .. theme_dir .. "/wall.png")
 
