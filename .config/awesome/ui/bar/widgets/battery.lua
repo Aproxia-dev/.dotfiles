@@ -1,6 +1,7 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
 local gears = require("gears")
+local naughty = require("naughty")
 local wibox = require("wibox")
 local icons = require("icons")
 local helpers = require("helpers")
@@ -109,6 +110,17 @@ local bat_widget = helpers.embox(wibox.widget {
 	layout = wibox.layout.stack
 })
 
+local time_till_empty
+local time_till_full
+
+bat_widget:connect_signal("button::press", function()
+	if not charging_icon.visible then
+		naughty.notify { title = "Battery info", text = "Time until empty: " .. time_till_empty  }
+	elseif charging_icon.visible then
+		naughty.notify { title = "Battery info", text = "Time until full: " .. time_till_full }
+	end
+end)
+
 bat_widget.shape.bgcol:connect_signal("property::bg", function(self, col)
 	charging_icon.shape.place.bg:set_bg(col)
 end)
@@ -154,6 +166,9 @@ awesome.connect_signal("signal::battery", function(bat0, bat1, charging, time_to
 	})
 
 	charging_icon.visible = charging
+
+	time_till_empty = math.floor(time_to_empty / 60) .. "h" .. time_to_empty % 60 .. "m"
+	time_till_full  = math.floor(time_to_full / 60) .. "h" .. time_to_full % 60 .. "m"
 end)
 
 return bat_widget
