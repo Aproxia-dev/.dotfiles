@@ -255,7 +255,5 @@ I'm still not 18 so I can't make a <b>PayPal</b> or a <b>Ko-fi</b> or anything l
   - [`AwesomeWM Discord Server`](https://discord.gg/BPat4F87dg)
 - And of course the credit also goes to all the contributors:
 <div>
-  <a href="https://github.com/Aproxia-dev/.dotfiles/graphs/contributors">
-    <img src="https://contrib.rocks/image?repo=Aproxia-dev/.dotfiles"/>
-  </a><sup><i>it's so lonely in here ;-;</i></sup>
+  <a href="https://github.com/Aproxia-dev/.dotfiles/graphs/contributors"><img src="https://contrib.rocks/image?repo=Aproxia-dev/.dotfiles"/></a>
 </div>
