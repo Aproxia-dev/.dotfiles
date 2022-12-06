@@ -15,7 +15,7 @@ local gfs        = require("gears.filesystem")
 local color      = require("modules.color")
 local conf_dir   = gfs.get_configuration_dir()
 local themes_dir = conf_dir .. "themes/"
-local theme_dir  = themes_dir .. theme
+local theme_dir  = themes_dir .. Theme
 
 -- xresources.set_dpi(92, 1)
 -- xresources.set_dpi(98, 2)

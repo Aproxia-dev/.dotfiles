@@ -1,29 +1,26 @@
 local awful     = require("awful")
 local beautiful = require("beautiful")
 local helpers   = require("helpers")
-local gears     = require("gears")
 local wibox     = require("wibox")
-local naughty   = require("naughty")
-local rubato    = require("modules.rubato")
 -- local bling     = require("modules.bling")
 require("conf.menu")
 require("conf.keys")
 
 awful.screen.connect_for_each_screen(function(s)
- 
-    barmenu = wibox.widget {
+
+    local barmenu = wibox.widget {
         awful.widget.launcher({ image = beautiful.launcher_icon,
                                 menu = menu }),
         widget = wibox.container.margin,
         margins = 4 + beautiful.launcher_padding
     }
-    taglist = require("ui.bar.widgets.taglist")(s)
-    tasklist = require("ui.bar.widgets.tasklist")(s)
-    systray = require("ui.bar.widgets.systray")(s) 
-    battery = nil; if laptop then battery = require("ui.bar.widgets.battery") end
-    volumebar = require("ui.bar.widgets.sliders.volume")(s)
-    kbdwidget = require("ui.bar.widgets.keyboard")
-    layouticon = helpers.embox(
+    local taglist = require("ui.bar.widgets.taglist")(s)
+    local tasklist = require("ui.bar.widgets.tasklist")(s)
+    local systray = require("ui.bar.widgets.systray")(s)
+    local battery = nil; if laptop then battery = require("ui.bar.widgets.battery") end
+    local volumebar = require("ui.bar.widgets.sliders.volume")(s)
+    local kbdwidget = require("ui.bar.widgets.keyboard")
+    local layouticon = helpers.embox(
         awful.widget.layoutbox {
             screen  = s,
             buttons = {
@@ -34,7 +31,7 @@ awful.screen.connect_for_each_screen(function(s)
             },
         },
     false, 6, nil, false)
-    clock = require("ui.bar.widgets.clock")
+    local clock = require("ui.bar.widgets.clock")
 
 
     -- Create the wibox
