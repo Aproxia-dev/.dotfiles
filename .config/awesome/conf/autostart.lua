@@ -8,6 +8,7 @@ local desktop_autostart = {
 local laptop_autostart = {
 	"picom -b --vsync",
 	"nm-applet",
+	"libinput-gestures-setup desktop start"
 }
 if laptop then
 	for _, app in ipairs(laptop_autostart) do
