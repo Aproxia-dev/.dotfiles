@@ -29,10 +29,7 @@ end)
 
 awful.screen.connect_for_each_screen(function(s)
 	s.nyoom = awful.popup {
-		widget = {
-			widget = awful.widget.only_on_screen,
-			screen = s,
-		},
+		widget = wibox.widget.textbox("this is a placeholder widget lmfao"),
 		screen = s,
 		visible = false,
 		ontop = true,
@@ -154,8 +151,8 @@ function switch_tag(i)
 	if math.min(0, i) == 0 then
 		transbox = wibox.widget {
 			{
-				wibox.widget.imagebox(wibox.widget.draw_to_image_surface(to_surface(t1), s.geometry.width, s.geometry.height)),
-				wibox.widget.imagebox(wibox.widget.draw_to_image_surface(to_surface(t2), s.geometry.width, s.geometry.height)),
+				wibox.widget.imagebox(wibox.widget.draw_to_image_surface(to_surface(t1), s.geometry.width, s.geometry.height), false),
+				wibox.widget.imagebox(wibox.widget.draw_to_image_surface(to_surface(t2), s.geometry.width, s.geometry.height), false),
 				layout = wibox.layout.fixed.vertical,
 			},
 			widget = wibox.container.margin,
@@ -166,8 +163,8 @@ function switch_tag(i)
 	else
 		transbox = wibox.widget {
 			{
-				wibox.widget.imagebox(wibox.widget.draw_to_image_surface(to_surface(t2), s.geometry.width, s.geometry.height)),
-				wibox.widget.imagebox(wibox.widget.draw_to_image_surface(to_surface(t1), s.geometry.width, s.geometry.height)),
+				wibox.widget.imagebox(wibox.widget.draw_to_image_surface(to_surface(t2), s.geometry.width, s.geometry.height), false),
+				wibox.widget.imagebox(wibox.widget.draw_to_image_surface(to_surface(t1), s.geometry.width, s.geometry.height), false),
 				layout = wibox.layout.fixed.vertical,
 			},
 			widget = wibox.container.margin,
@@ -177,7 +174,7 @@ function switch_tag(i)
 		go_to = 0
 	end
 
-	s.nyoom.widget = transbox
+	s.nyoom.widget = wibox.container.constraint(transbox, "max", nil, s.geometry.height)
 	s.nyoom.visible = true
 
 	local anim = rubato.timed {
