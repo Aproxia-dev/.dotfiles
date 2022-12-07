@@ -27,8 +27,22 @@ tag.connect_signal("property::selected", function(t)
     }
 end)
 
+awful.screen.connect_for_each_screen(function(s)
+	s.nyoom = awful.popup {
+		widget = {
+			widget = awful.widget.only_on_screen,
+			screen = s,
+		},
+		screen = s,
+		visible = false,
+		ontop = true,
+		bg = "#00000000",
+	}
+
+
+end)
+
 function to_surface(t)
-	local t = t
 	local client_list = wibox.layout.manual()
 	for _, c in ipairs(t:clients()) do
 		if not c.minimized and not c.hidden then
@@ -133,46 +147,38 @@ function switch_tag(i)
 	elseif t2i == 0 then t2i = 6 end
 	local t2 = awful.screen.focused().tags[t2i]
 
+	local s = t1.screen
 	
 	local transbox, go_to
 
 	if math.min(0, i) == 0 then
 		transbox = wibox.widget {
 			{
-				wibox.widget.imagebox(wibox.widget.draw_to_image_surface(to_surface(t1), t1.screen.geometry.width, t1.screen.geometry.height)),
-				wibox.widget.imagebox(wibox.widget.draw_to_image_surface(to_surface(t2), t2.screen.geometry.width, t2.screen.geometry.height)),
+				wibox.widget.imagebox(wibox.widget.draw_to_image_surface(to_surface(t1), s.geometry.width, s.geometry.height)),
+				wibox.widget.imagebox(wibox.widget.draw_to_image_surface(to_surface(t2), s.geometry.width, s.geometry.height)),
 				layout = wibox.layout.fixed.vertical,
 			},
 			widget = wibox.container.margin,
-			forced_width = awful.screen.focused().geometry.width,
+			forced_width = s.geometry.width,
 			top = 0,
 		}
-		go_to = -awful.screen.focused().geometry.height
+		go_to = -s.geometry.height
 	else
 		transbox = wibox.widget {
 			{
-				wibox.widget.imagebox(wibox.widget.draw_to_image_surface(to_surface(t2), t2.screen.geometry.width, t2.screen.geometry.height)),
-				wibox.widget.imagebox(wibox.widget.draw_to_image_surface(to_surface(t1), t1.screen.geometry.width, t1.screen.geometry.height)),
+				wibox.widget.imagebox(wibox.widget.draw_to_image_surface(to_surface(t2), s.geometry.width, s.geometry.height)),
+				wibox.widget.imagebox(wibox.widget.draw_to_image_surface(to_surface(t1), s.geometry.width, s.geometry.height)),
 				layout = wibox.layout.fixed.vertical,
 			},
 			widget = wibox.container.margin,
-			forced_width = awful.screen.focused().geometry.width,
-			top = -awful.screen.focused().geometry.height,
+			forced_width = s.geometry.width,
+			top = -s.geometry.height,
 		}
 		go_to = 0
 	end
 
-
-	local nyoom = awful.popup {
-		widget = {
-			transbox,
-			widget = awful.widget.only_on_screen,
-			screen = awful.screen.focused(),
-		},
-		screen = awful.screen.focused(),
-		ontop = true,
-		bg = "#00000000",
-	}
+	s.nyoom.widget = transbox
+	s.nyoom.visible = true
 
 	local anim = rubato.timed {
 		duration = 0.2,
@@ -192,7 +198,7 @@ function switch_tag(i)
     				    autostart = true,
     				    single_shot = true,
 				    callback = function()
-					nyoom.visible = false
+					s.nyoom.visible = false
 					-- naughty.notify { text = tostring(pos) }
 				    end
 				}
@@ -200,10 +206,8 @@ function switch_tag(i)
 		end
 	}
 
-	awful.tag.viewnone(awful.screen.focused())
+	awful.tag.viewnone(s)
 	anim.target = go_to
 end
-
--- switch_tag(1)
 
 return {switch_tag = switch_tag, to_surface = to_surface}
