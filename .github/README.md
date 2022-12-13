@@ -257,3 +257,5 @@ I'm still not 18 so I can't make a <b>PayPal</b> or a <b>Ko-fi</b> or anything l
 <div>
   <a href="https://github.com/Aproxia-dev/.dotfiles/graphs/contributors"><img src="https://contrib.rocks/image?repo=Aproxia-dev/.dotfiles"/></a>
 </div>
+
+<div align="center"><img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/footers/gray0_ctp_on_line.svg" /></div>
