@@ -1,3 +1,18 @@
+<h1 align=center>ABANDONED! sorta...</h1>
+
+<div align=center>
+This repo is now abandoned because I am currently on the move over to NixOS, making this repo be of less use to me.
+
+I will still keep this repo archived, and I'll still work on the rice further in my new NixOS config repo, though.
+
+<br />
+
+<a href="https://github.com/Aproxia-dev/nixdots">My first attempt at a NixOS config</a><br />
+<a href="https://github.com/OwO-Digital/nixos-config">The NixOS config I am currently working on</a>
+</div>
+
+<br />
+
 <h1 align=center>🌸 &nbsp; Apro's Dotfiles! &nbsp; 🏡</h1>
 
 <div align=center>
